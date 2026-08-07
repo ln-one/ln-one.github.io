@@ -1,0 +1,321 @@
+.shell {
+  width: min(1180px, calc(100vw - 48px));
+  min-height: 720px;
+  overflow: hidden;
+  color: #25324d;
+  background: #f8faff;
+  border: 1px solid #e0e5f0;
+  border-radius: 18px;
+  box-shadow: 0 18px 55px rgba(68, 86, 134, 0.12);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 26px 14px;
+  background: rgba(255, 255, 255, 0.84);
+  border-bottom: 1px solid #e8ebf3;
+}
+
+.header h1 {
+  margin: 0;
+  color: #1d2d55;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.header p {
+  margin: 5px 0 0;
+  color: #71809e;
+  font-size: 12px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.actions button {
+  padding: 7px 11px;
+  color: #415275;
+  font: inherit;
+  font-size: 12px;
+  background: #fff;
+  border: 1px solid #d9e0ee;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.actions button:hover:not(:disabled) {
+  color: #253a9d;
+  border-color: #8ca3ed;
+  background: #f6f8ff;
+}
+
+.actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  min-height: 34px;
+  padding: 9px 26px;
+  color: #7684a0;
+  font-size: 11px;
+  background: #fbfcff;
+}
+
+.error {
+  color: #b43c54;
+}
+
+.canvas {
+  position: relative;
+  height: min(70vh, 640px);
+  min-height: 520px;
+  margin: 0 14px 14px;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 48%, rgba(89, 113, 221, 0.11), transparent 34%), #fff;
+  border: 1px solid #e7ebf4;
+  border-radius: 12px;
+}
+
+.settings {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 4;
+  width: min(260px, calc(100% - 24px));
+  color: #53627d;
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid #dce3f0;
+  border-radius: 9px;
+  box-shadow: 0 8px 26px rgba(42, 57, 96, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+.settings summary {
+  padding: 8px 10px;
+  color: #33446c;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+}
+
+.settingsSection {
+  display: grid;
+  gap: 8px;
+  padding: 9px 10px;
+  border-top: 1px solid #edf0f6;
+}
+
+.settingsSection strong {
+  color: #697997;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.settingRow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 6px 8px;
+}
+
+.settingRow input[type='range'] {
+  grid-column: 1 / -1;
+  width: 100%;
+  accent-color: #536ddd;
+}
+
+.settingRow output {
+  min-width: 28px;
+  color: #7a88a2;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.pixiViewport {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* The standalone story supplies the same CSS probe surface as the host app. */
+:global(.graph-view.color-fill) {
+  color: #5069d9;
+}
+
+:global(.graph-view.color-fill-focused) {
+  color: #5069d9;
+}
+
+:global(.graph-view.color-fill-tag) {
+  color: #159b86;
+}
+
+:global(.graph-view.color-fill-unresolved) {
+  color: #c96571;
+}
+
+:global(.graph-view.color-fill-attachment) {
+  color: #e29352;
+}
+
+:global(.graph-view.color-arrow),
+:global(.graph-view.color-circle),
+:global(.graph-view.color-fill-highlight),
+:global(.graph-view.color-line-highlight) {
+  color: #536ddd;
+}
+
+:global(.graph-view.color-line) {
+  color: #c5cedd;
+}
+
+:global(.graph-view.color-text) {
+  color: #556582;
+}
+
+:global([data-theme='dark'] .graph-view.color-fill),
+:global(.dark .graph-view.color-fill) {
+  color: #8ea2ff;
+}
+
+:global([data-theme='dark'] .graph-view.color-fill-focused),
+:global(.dark .graph-view.color-fill-focused) {
+  color: #a9b9ff;
+}
+
+:global([data-theme='dark'] .graph-view.color-fill-tag),
+:global(.dark .graph-view.color-fill-tag) {
+  color: #2dd4bf;
+}
+
+:global([data-theme='dark'] .graph-view.color-fill-unresolved),
+:global(.dark .graph-view.color-fill-unresolved) {
+  color: #fb7185;
+}
+
+:global([data-theme='dark'] .graph-view.color-fill-attachment),
+:global(.dark .graph-view.color-fill-attachment) {
+  color: #fb923c;
+}
+
+:global([data-theme='dark'] .graph-view.color-arrow),
+:global([data-theme='dark'] .graph-view.color-circle),
+:global([data-theme='dark'] .graph-view.color-fill-highlight),
+:global([data-theme='dark'] .graph-view.color-line-highlight),
+:global(.dark .graph-view.color-arrow),
+:global(.dark .graph-view.color-circle),
+:global(.dark .graph-view.color-fill-highlight),
+:global(.dark .graph-view.color-line-highlight) {
+  color: #9aaeff;
+}
+
+:global([data-theme='dark'] .graph-view.color-line),
+:global(.dark .graph-view.color-line) {
+  color: #94a3b8;
+}
+
+:global([data-theme='dark'] .graph-view.color-text),
+:global(.dark .graph-view.color-text) {
+  color: #cbd5e1;
+}
+
+.pixiCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+}
+
+.pixiInteraction {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: default;
+  touch-action: none;
+  user-select: none;
+}
+
+.keyboardControl {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+  width: 2px;
+  height: 2px;
+  padding: 0;
+  opacity: 0;
+  border: 0;
+}
+
+.keyboardControl:focus {
+  width: 24px;
+  height: 24px;
+  opacity: 0.78;
+  outline: 2px solid #536ddd;
+  outline-offset: 2px;
+}
+
+.instructions {
+  position: absolute;
+  right: 16px;
+  bottom: 14px;
+  padding: 5px 8px;
+  color: #8894aa;
+  font-size: 11px;
+  pointer-events: none;
+}
+
+.accessibleNodes {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .shell {
+    width: calc(100vw - 20px);
+  }
+
+  .header {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 18px;
+  }
+
+  .actions {
+    justify-content: flex-start;
+  }
+
+  .meta {
+    padding-inline: 18px;
+  }
+
+  .canvas {
+    min-height: 430px;
+    margin-inline: 8px;
+  }
+}

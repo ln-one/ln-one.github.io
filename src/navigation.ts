@@ -1,14 +1,14 @@
 export const headerData = {
   links: [
-    { text: 'About', href: '/#about' },
-    { text: 'Research', href: '/#research' },
-    { text: 'Projects', href: '/#projects' },
-    { text: 'Background', href: '/#experience' },
-    { text: 'Contact', href: '/#contact' },
+    { text: 'Spectra', href: '/#spectra' },
+    { text: 'EAHR', href: '/#eahr' },
+    { text: 'StratuMind', href: '/#stratumind' },
+    { text: '经历', href: '/#background' },
+    { text: '联系', href: '/#contact' },
   ],
   actions: [
     {
-      text: 'CV',
+      text: '简历',
       href: '/files/Chunran-Zhang-CV.pdf',
       target: '_blank',
       icon: 'tabler:file-text',
@@ -19,26 +19,27 @@ export const headerData = {
 export const footerData = {
   links: [
     {
-      title: 'Explore',
+      title: '导航',
       links: [
-        { text: 'Research', href: '/#research' },
-        { text: 'Projects', href: '/#projects' },
-        { text: 'Background', href: '/#experience' },
+        { text: 'Spectra', href: '/#spectra' },
+        { text: 'EAHR', href: '/#eahr' },
+        { text: 'StratuMind', href: '/#stratumind' },
+        { text: '经历', href: '/#background' },
       ],
     },
     {
-      title: 'Contact',
+      title: '联系',
       links: [
-        { text: 'Email', href: 'mailto:chronis@my.swjtu.edu.cn' },
+        { text: '邮箱', href: 'mailto:chronis@my.swjtu.edu.cn' },
         { text: 'GitHub', href: 'https://github.com/ln-one' },
-        { text: 'CV', href: '/files/Chunran-Zhang-CV.pdf' },
+        { text: '简历', href: '/files/Chunran-Zhang-CV.pdf' },
       ],
     },
   ],
   secondaryLinks: [],
   socialLinks: [
-    { ariaLabel: 'Email', icon: 'tabler:mail', href: 'mailto:chronis@my.swjtu.edu.cn' },
+    { ariaLabel: '邮箱', icon: 'tabler:mail', href: 'mailto:chronis@my.swjtu.edu.cn' },
     { ariaLabel: 'GitHub', icon: 'tabler:brand-github', href: 'https://github.com/ln-one' },
   ],
-  footNote: `© ${new Date().getFullYear()} Chunran Zhang. Built with AstroWind.`,
+  footNote: `© ${new Date().getFullYear()} 张春冉 · 基于 AstroWind 构建`,
 };

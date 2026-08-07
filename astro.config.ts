@@ -6,6 +6,7 @@ import { defineConfig } from 'astro/config';
 import { unified } from '@astrojs/markdown-remark';
 
 import sitemap from '@astrojs/sitemap';
+import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
@@ -28,6 +29,7 @@ export default defineConfig({
 
   integrations: [
     sitemap(),
+    react(),
     mdx(),
     icon({
       include: {

@@ -1,5 +1,5 @@
 site:
-  name: Chunran Zhang
+  name: 张春冉
   site: 'https://ln-one.github.io'
   base: '/'
   trailingSlash: false
@@ -7,20 +7,20 @@ site:
 
 metadata:
   title:
-    default: Chunran Zhang
-    template: '%s — Chunran Zhang'
-  description: 'Research and software systems by Chunran Zhang.'
+    default: 张春冉
+    template: '%s — 张春冉'
+  description: '张春冉的科研与软件系统个人主页。'
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: Chunran Zhang
+    site_name: 张春冉
     type: website
   twitter:
     cardType: summary_large_image
 
 i18n:
-  language: en
+  language: zh-CN
   textDirection: ltr
 
 apps:
