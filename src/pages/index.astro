@@ -7,8 +7,9 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 import SpectraGraphDemo from '~/components/graph-view/SpectraGraphDemo';
 
 const metadata = {
-  title: '张春冉 — 科研与软件系统',
-  description: '张春冉关注 RAG、精确自适应混合检索、AI 智能体和基于 Qdrant 底层改造的检索系统。',
+  title: 'Chunran Zhang | Research and Software Systems',
+  description:
+    'Chunran Zhang works on RAG, exact adaptive hybrid retrieval, AI agents, and retrieval systems built inside Qdrant.',
   ignoreTitleTemplate: true,
 };
 ---
@@ -20,24 +21,29 @@ const metadata = {
     <div class="grid items-center gap-10 md:grid-cols-[240px_minmax(0,1fr)] md:gap-14">
       <img
         src="/images/chunran-cafe-portrait.jpg"
-        alt="张春冉在咖啡店的个人照片"
+        alt="Chunran Zhang"
         width="878"
         height="900"
         class="mx-auto aspect-[4/5] w-full max-w-[230px] rounded-3xl object-cover object-center shadow-lg ring-1 ring-black/5 dark:ring-white/10"
       />
 
       <div>
-        <p class="text-sm font-bold uppercase tracking-widest text-secondary">西南交通大学 · 软件工程</p>
-        <h1 class="mt-3 text-4xl font-bold tracking-tight md:text-5xl">您好，我是张春冉。</h1>
+        <p class="text-sm font-bold uppercase tracking-widest text-secondary">
+          Southwest Jiaotong University · Software Engineering
+        </p>
+        <h1 class="mt-3 text-4xl font-bold tracking-tight md:text-5xl">Hello, I’m Chunran Zhang.</h1>
         <p class="mt-5 text-lg leading-8 text-muted md:text-xl">
-          我主要做 AI Agent 系统，Spectra 是我目前投入最多的项目。在开发 Spectra 的过程中，我开始接触
-          RAG，也注意到混合检索里固定 Top-L 带来的问题。
+          I work primarily on AI agent systems. Spectra is the project to which I have devoted the most time. Building
+          it introduced me to RAG and to a problem with the fixed Top-L cutoff used in hybrid retrieval.
         </p>
         <p class="mt-4 text-lg leading-8 text-muted">
-          我没有继续调 Top-L，而是把它当成一个研究问题，后来提出了 EAHR。为了真正把 EAHR 做出来，我又深入 Qdrant
-          底层，在它的基础上做了 fork，完成了 StratuMind。
+          Instead of treating Top-L as another parameter to tune, I turned the issue into a research question and
+          developed EAHR. Implementing the method then took me into Qdrant itself, where I built StratuMind as a fork of
+          the database.
         </p>
-        <p class="mt-6 text-sm font-semibold text-default">软件工程本科生 · 预计 2027 年毕业 · 正在准备推免</p>
+        <p class="mt-6 text-sm font-semibold text-default">
+          Software Engineering undergraduate · Expected graduation: 2027 · Applying for graduate study
+        </p>
       </div>
     </div>
   </section>
@@ -45,36 +51,42 @@ const metadata = {
   <section id="spectra" class="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-24">
     <div class="grid items-center gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14">
       <div>
-        <p class="text-sm font-bold uppercase tracking-widest text-secondary">Spectra · 智慧教育系统</p>
-        <h2 class="mt-3 text-4xl font-bold tracking-tight md:text-5xl">Spectra：从一次比赛开始</h2>
+        <p class="text-sm font-bold uppercase tracking-widest text-secondary">Spectra · Intelligent Education System</p>
+        <h2 class="mt-3 text-4xl font-bold tracking-tight md:text-5xl">Spectra began with a competition</h2>
         <p class="mt-5 text-lg leading-8 text-muted">
-          Spectra 最初是我为服务外包大赛开发的智慧教育系统。我们希望把资料处理、知识库、RAG 与 Agent
-          工作流放进一个真正可以使用的产品，而不只是完成一套比赛演示。
+          I first developed Spectra for the China Undergraduate Service Outsourcing Innovation and Entrepreneurship
+          Competition. We set out to build a usable education product that brought document processing, knowledge bases,
+          RAG, and agent workflows together, rather than stopping at a competition demo.
         </p>
         <p class="mt-4 text-lg leading-8 text-muted">
-          团队共有五人。除少量 UI 设计由另一位同学负责外，产品设计、系统架构和核心功能基本都由我完成。Spectra
-          最终进入全国总决赛，也是我目前投入最多的系统。
+          I led a team of five. Apart from a small part of the visual UI design, I was responsible for the product
+          design, system architecture, and core implementation. Spectra reached the national final and remains the
+          system into which I have put the most work.
         </p>
 
         <div class="mt-8 space-y-5 border-l border-gray-200 pl-6 dark:border-slate-700">
           <div>
-            <h3 class="font-semibold">资料库之间可以相互 Reference</h3>
+            <h3 class="font-semibold">Knowledge spaces can reference one another</h3>
             <p class="mt-1 text-sm leading-6 text-muted">
-              一个资料库可以引用另一个资料库，不需要把已有内容重新复制一遍。例如，智能建造课程可以同时引用人工智能、土木工程、BIM、物联网和项目管理资料库。
+              One knowledge space can reference another without copying its contents. An Intelligent Construction
+              course, for example, can draw on spaces for artificial intelligence, civil engineering, BIM, IoT, and
+              project management.
             </p>
           </div>
           <div>
-            <h3 class="font-semibold">促进学科交融</h3>
+            <h3 class="font-semibold">Designed for work across disciplines</h3>
             <p class="mt-1 text-sm leading-6 text-muted">
-              被引用的资料仍然保留原有结构和来源，不同学科的知识则可以在新的课程空间中重新组合。这种引用关系可以促进学科交融，也为跨学科课程、科研协作和产业案例进入教学提供基础。
+              Referenced material keeps its original structure and provenance while knowledge from different fields can
+              be recombined in a new course. The same mechanism supports interdisciplinary teaching, research
+              collaboration, and the use of industry cases in the classroom.
             </p>
           </div>
         </div>
 
         <div class="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-xs font-semibold uppercase tracking-wide text-muted">
-          <span>服务外包大赛全国总决赛</span>
-          <span>五人团队负责人</span>
-          <span>除部分前端视觉设计外，核心系统由我完成</span>
+          <span>National finalist</span>
+          <span>Team lead, five members</span>
+          <span>Core system built by me, except for part of the visual frontend design</span>
           <a
             href="https://www.fwwb.org.cn/attached/file/20260629/20260629173558_286.pdf"
             target="_blank"
@@ -82,7 +94,7 @@ const metadata = {
             class="inline-flex items-center gap-1.5 rounded-full border border-gray-300 px-3 py-1.5 normal-case transition hover:border-blue-400 hover:text-blue-600 dark:border-slate-600"
           >
             <Icon name="tabler:external-link" class="h-4 w-4" />
-            官方获奖名单：A组序号 4 · 螃蟹卡农
+            Official finalist list: Group A, No. 4, Crab Canon
           </a>
         </div>
       </div>
@@ -99,7 +111,7 @@ const metadata = {
         rel="noopener noreferrer"
         class="rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
       >
-        试用 Spectra
+        Try Spectra
       </a>
       <a
         href="https://github.com/ln-one/Spectra"
@@ -113,39 +125,44 @@ const metadata = {
     </div>
     <p class="mt-3 flex items-center justify-center gap-1.5 text-sm font-semibold text-blue-600 dark:text-blue-400">
       <Icon name="tabler:clock" class="h-4 w-4" />
-      每天 9:00–21:00 开放体验
+      The live system is available daily from 9:00 to 21:00 China Standard Time
     </p>
   </section>
 
-  <section class="relative mx-auto max-w-5xl px-4 py-10 sm:px-6 md:py-16" aria-label="从产品到科研问题">
+  <section
+    class="relative mx-auto max-w-5xl px-4 py-10 sm:px-6 md:py-16"
+    aria-label="From product work to a research question"
+  >
     <div
       class="rounded-3xl border border-blue-200 bg-blue-50/70 px-6 py-10 text-center dark:border-blue-900 dark:bg-blue-950/20 md:px-12"
     >
-      <p class="text-sm font-bold uppercase tracking-widest text-secondary">从 Spectra 到 EAHR</p>
+      <p class="text-sm font-bold uppercase tracking-widest text-secondary">From Spectra to EAHR</p>
       <h2 class="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
-        在做 RAG 的过程中，我发现固定 Top-L 不只是一个调参问题
+        In a RAG system, fixed Top-L is more than a tuning choice
       </h2>
       <p class="mx-auto mt-5 max-w-3xl text-lg leading-8 text-muted">
-        因为 Spectra 是一个由 RAG 驱动的 Agent 系统，我开始真正接触混合检索。在融合 dense 与 sparse
-        检索结果之前，常见做法是分别取固定长度的
-        Top-L，再对这些候选结果进行融合。最初看起来，这只是一个控制检索开销的工程参数。
+        Spectra is an agent system built around RAG, so developing it led me to hybrid retrieval. A common pipeline
+        takes a fixed Top-L from the dense and sparse rankers before fusing their candidates. At first, L appears to be
+        a simple way to control retrieval cost.
       </p>
       <p class="mx-auto mt-4 max-w-3xl text-lg leading-8 text-muted">
-        但固定 Top-L 会直接截断后续贡献，也可能改变最终 Top-K
-        的成员和顺序。一个原本用于控制计算量的参数，实际上参与定义了系统返回什么结果。我觉得这种设计在工程上很不优雅，于是没有继续调
-        Top-L，而是把问题往下追，最终提出了 EAHR。
+        But the same cutoff determines both which ranks enter fusion and how deeply each channel executes. Candidate
+        depth therefore becomes a quality-cost hyperparameter that does not transfer reliably across queries or corpus
+        snapshots. I chose to study that coupling instead of continuing to retune L, which led to EAHR.
       </p>
     </div>
   </section>
 
   <section id="eahr" class="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-24">
     <div class="mx-auto max-w-3xl text-center">
-      <p class="text-sm font-bold uppercase tracking-widest text-secondary">科研问题</p>
-      <h2 class="mt-3 text-4xl font-bold tracking-tight md:text-5xl">能不能不要固定 Top-L？</h2>
+      <p class="text-sm font-bold uppercase tracking-widest text-secondary">The research question</p>
+      <h2 class="mt-3 text-4xl font-bold tracking-tight md:text-5xl">
+        Can hybrid retrieval work without a fixed Top-L?
+      </h2>
       <p class="mt-5 text-lg text-muted md:text-xl">
-        EAHR 把完整稠密与稀疏排序经过 weighted RRF 得到的有序 Top-K
-        定义为结果本身。系统不再预先固定每个通道读多深，而是按当前请求逐步读取；只要未读部分仍可能改变 Top-K
-        的成员或顺序，就不能停。
+        EAHR defines the target as the ordered Top-K produced by weighted RRF over the complete dense and sparse
+        rankings. Rather than choosing a channel depth in advance, it reads each ranking incrementally for the current
+        request and stops only when the unread suffixes can no longer change Top-K membership or order.
       </p>
     </div>
 
@@ -154,7 +171,7 @@ const metadata = {
     >
       <img
         src="/research/eahr-overview.svg"
-        alt="固定 Top-L 融合与 EAHR 精确自适应执行的对比"
+        alt="Fixed Top-L fusion compared with exact adaptive execution in EAHR"
         class="h-auto w-full"
         loading="lazy"
       />
@@ -162,21 +179,24 @@ const metadata = {
 
     <div class="mt-10 grid gap-6 md:grid-cols-3">
       <article class="rounded-xl border border-gray-200 p-6 dark:border-slate-700">
-        <h3 class="text-xl font-semibold">先固定结果定义</h3>
+        <h3 class="text-xl font-semibold">Define the result first</h3>
         <p class="mt-2 text-muted">
-          目标始终是完整稠密与稀疏排序经过 weighted RRF 得到的有序 Top-K，并使用确定性的身份规则处理同分。
+          The target is always the ordered Top-K from weighted RRF over the complete dense and sparse rankings, with a
+          deterministic identity rule for ties.
         </p>
       </article>
       <article class="rounded-xl border border-gray-200 p-6 dark:border-slate-700">
-        <h3 class="text-xl font-semibold">排名流可以暂停和继续</h3>
+        <h3 class="text-xl font-semibold">Exact rank streams that can resume</h3>
         <p class="mt-2 text-muted">
-          PVS 和 PBM 持续输出稳定、精确的稠密与稀疏排名前缀。执行可以暂停、恢复，已经发布的排名不会被推翻。
+          PVS and PBM publish stable, exact prefixes of the dense and sparse rankings. Execution can pause and resume,
+          and a published rank is never revised later.
         </p>
       </article>
       <article class="rounded-xl border border-gray-200 p-6 dark:border-slate-700">
-        <h3 class="text-xl font-semibold">什么时候停，有明确证明</h3>
+        <h3 class="text-xl font-semibold">A certified stopping rule</h3>
         <p class="mt-2 text-muted">
-          只有在未读排名仍可能改变 Top-K 的成员或顺序时，融合层才继续读取。难请求最坏也只是安全地读到穷尽。
+          Fusion continues only while an unread rank could still affect Top-K membership or order. Difficult requests
+          safely continue to exhaustion.
         </p>
       </article>
     </div>
@@ -187,7 +207,7 @@ const metadata = {
         target="_blank"
         class="inline-flex rounded-full border border-gray-300 px-5 py-2.5 text-sm font-semibold transition hover:border-blue-400 hover:text-blue-600 dark:border-slate-600"
       >
-        阅读预印本
+        Read the preprint
       </a>
     </div>
   </section>
@@ -199,36 +219,41 @@ const metadata = {
     <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-24">
       <div class="grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
-          <p class="text-sm font-bold uppercase tracking-widest text-secondary">StratuMind · 工程实现</p>
-          <h2 class="mt-3 text-4xl font-bold tracking-tight md:text-5xl">要实现这个结果契约，只封装 Qdrant 不够</h2>
+          <p class="text-sm font-bold uppercase tracking-widest text-secondary">StratuMind · Systems implementation</p>
+          <h2 class="mt-3 text-4xl font-bold tracking-tight md:text-5xl">A wrapper around Qdrant was not enough</h2>
           <p class="mt-5 text-lg text-muted">
-            EAHR
-            需要的不是两份已经截断的候选列表，而是仍可继续读取、可以暂停恢复、保持快照一致且失败时拒绝返回错误结果的精确排名流。反复调用常规
-            Top-L API 无法提供这些语义。
+            EAHR does not need two candidate lists that have already been truncated. It needs exact rank streams that
+            remain open, resume from saved state, share a consistent snapshot, and fail closed. Repeated calls to a
+            conventional Top-L API cannot provide those semantics.
           </p>
           <p class="mt-4 text-lg text-muted">
-            所以我基于 Qdrant v1.18.2 做了底层 fork，在它的执行链路里实现 EAHR。这就是
-            StratuMind，不是一层外部编排封装。
+            I therefore forked Qdrant v1.18.2 in Rust and implemented EAHR inside its execution path. The result is
+            StratuMind, a change to the retrieval engine rather than an external orchestration layer.
           </p>
         </div>
 
         <div class="grid gap-4 sm:grid-cols-2">
           <article class="rounded-xl border border-gray-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-900">
-            <h3 class="text-lg font-semibold">PVS · 稠密检索</h3>
+            <h3 class="text-lg font-semibold">PVS · Dense retrieval</h3>
             <p class="mt-2 text-muted">
-              用逐向量标量区间缩小候选范围，只对必要向量做 float32 精确计算，按顺序发布稠密排名。
+              Per-vector scalar intervals narrow the candidate set. PVS evaluates only the vectors that require exact
+              float32 scores and publishes the dense ranking in order.
             </p>
           </article>
           <article class="rounded-xl border border-gray-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-900">
-            <h3 class="text-lg font-semibold">PBM · 稀疏检索</h3>
-            <p class="mt-2 text-muted">在压缩倒排表上维护 posting 区间的块最大值，逐步发布精确稀疏排名。</p>
+            <h3 class="text-lg font-semibold">PBM · Sparse retrieval</h3>
+            <p class="mt-2 text-muted">
+              PBM maintains block maxima over posting ranges in compressed inverted lists and incrementally publishes
+              the exact sparse ranking.
+            </p>
           </article>
           <article
             class="rounded-xl border border-gray-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-900 sm:col-span-2"
           >
-            <h3 class="text-lg font-semibold">原生执行协议</h3>
+            <h3 class="text-lg font-semibold">A native execution protocol</h3>
             <p class="mt-2 text-muted">
-              在 Segment 和 Shard 层合并排名流，并处理固定快照、确定性同分、穷尽、取消和失败语义。
+              Rank streams merge at the Segment and Shard layers, with explicit handling for fixed snapshots,
+              deterministic ties, exhaustion, cancellation, and failure.
             </p>
           </article>
         </div>
@@ -248,19 +273,19 @@ const metadata = {
 
       <div class="mt-12 flex flex-wrap items-center justify-center gap-3 text-sm font-semibold">
         <span class="rounded-full border border-gray-300 bg-white px-4 py-2 dark:border-slate-600 dark:bg-slate-900"
-          >Spectra 查询</span
+          >Spectra query</span
         >
         <span aria-hidden="true" class="text-muted">→</span>
         <span class="rounded-full border border-gray-300 bg-white px-4 py-2 dark:border-slate-600 dark:bg-slate-900"
-          >StratuMind / Qdrant 底层 fork</span
+          >StratuMind / Qdrant fork</span
         >
         <span aria-hidden="true" class="text-muted">→</span>
         <span class="rounded-full border border-gray-300 bg-white px-4 py-2 dark:border-slate-600 dark:bg-slate-900"
-          >PVS + PBM + 自适应 WRRF</span
+          >PVS + PBM + adaptive WRRF</span
         >
         <span aria-hidden="true" class="text-muted">→</span>
         <span class="rounded-full border border-gray-300 bg-white px-4 py-2 dark:border-slate-600 dark:bg-slate-900"
-          >精确有序 Top-K</span
+          >Exact ordered Top-K</span
         >
       </div>
 
@@ -268,20 +293,23 @@ const metadata = {
         class="mt-12 grid items-center gap-6 rounded-3xl border border-blue-200 bg-blue-50 p-7 dark:border-blue-900 dark:bg-blue-950/30 md:p-10 lg:grid-cols-[0.7fr_1.3fr]"
       >
         <div>
-          <p class="text-sm font-bold uppercase tracking-widest text-secondary">回到 Spectra</p>
-          <h3 class="mt-2 text-3xl font-bold tracking-tight">从产品里发现问题，再把研究做回产品</h3>
+          <p class="text-sm font-bold uppercase tracking-widest text-secondary">Back to Spectra</p>
+          <h3 class="mt-2 text-3xl font-bold tracking-tight">
+            A problem found in a product, and research built back into it
+          </h3>
         </div>
         <div>
           <p class="text-lg leading-8 text-muted">
-            Spectra 给了我一个真实的工程问题。EAHR 把这个问题转化为检索研究，StratuMind
-            又把研究方法实现为可以运行的底层系统。最后，StratuMind 对 Spectra 暴露的仍是普通有序 Top-K
-            接口，复杂的继续读取、结果认证和自适应执行全部留在检索系统内部。
+            Spectra exposed a real engineering problem. EAHR turned it into a retrieval problem, and StratuMind made the
+            proposed method executable inside the database. Spectra still receives an ordinary ordered Top-K response;
+            continuation state, certification, and adaptive execution remain inside the retrieval system.
           </p>
           <p class="mt-4 text-lg leading-8 text-muted">
-            从智慧教育产品，到科研问题，再到底层工程实现，最后重新服务于产品。这是我目前完成的一次完整的产学研闭环。
+            The work now forms a complete loop: a product raised the question, the question became research, the
+            research required a systems implementation, and that implementation returns to serve the product.
           </p>
           <a href="#spectra" class="mt-5 inline-flex text-sm font-semibold text-blue-600 hover:text-blue-700">
-            回到 Spectra ↑
+            Back to Spectra ↑
           </a>
         </div>
       </div>
@@ -290,28 +318,32 @@ const metadata = {
 
   <Features3
     id="background"
-    tagline="基本情况"
-    title="教育与经历"
+    tagline="Background"
+    title="Education and experience"
     columns={2}
     items={[
       {
-        title: '西南交通大学 · 2023–2027',
-        description: '计算机与人工智能学院软件工程专业本科生。CET-6：514。',
+        title: 'Southwest Jiaotong University · 2023 to 2027',
+        description:
+          'B.Eng. candidate in Software Engineering, School of Computing and Artificial Intelligence. CET-6: 514.',
         icon: 'tabler:school',
       },
       {
-        title: '专业排名持续提升',
-        description: '大一专业排名 135/189，大二提升至 8/88，第五学期为 6/90。',
+        title: 'Strong academic improvement',
+        description:
+          'Major rank improved from 135/189 in the first year to 8/88 in the second year and 6/90 in the fifth semester.',
         icon: 'tabler:trending-up',
       },
       {
-        title: '服务外包大赛全国总决赛',
-        description: '带领“螃蟹卡农”团队（A组序号 4）进入第 17 届中国大学生服务外包创新创业大赛全国总决赛。',
+        title: 'National competition finalist',
+        description:
+          'Led Team Crab Canon (Group A, No. 4) to the national final of the 17th China Undergraduate Service Outsourcing Innovation and Entrepreneurship Competition.',
         icon: 'tabler:trophy',
       },
       {
-        title: '学生工作',
-        description: '连续三年担任软件工程 2023-02 班班长，中共预备党员，校级优秀共青团干部、三好学生、明诚奖。',
+        title: 'Leadership and service',
+        description:
+          'Class monitor for Software Engineering Class 2023-02 for three consecutive years; probationary CPC member; recipient of the university-level Outstanding Communist Youth League Cadre, Merit Student, and Mingcheng awards.',
         icon: 'tabler:flag',
       },
     ]}
@@ -319,23 +351,23 @@ const metadata = {
 
   <CallToAction
     id="contact"
-    title="期待与您交流"
-    subtitle="我正在准备推免。EAHR 是我独立完成的工作，希望相关领域的老师能够阅读并给予指正；如果您对 Spectra 感兴趣，我也很愿意进一步介绍和演示这个系统。欢迎通过邮件联系我。"
+    title="I’d be glad to hear from you"
+    subtitle="I am currently applying for graduate study. I developed EAHR independently and would value comments from researchers in the field. I would also be happy to introduce or demonstrate Spectra. Feel free to contact me by email."
     actions={[
       {
         variant: 'primary',
-        text: '邮件联系',
+        text: 'Email me',
         href: 'mailto:chronis@my.swjtu.edu.cn',
         icon: 'tabler:mail',
       },
       {
-        text: '试用 Spectra',
+        text: 'Try Spectra',
         href: 'https://spectra.forevergreendam.cn',
         target: '_blank',
         icon: 'tabler:external-link',
       },
       {
-        text: '查看 EAHR 预印本',
+        text: 'Read the EAHR preprint',
         href: '/files/Chunran-Zhang-EAHR-preprint.pdf',
         target: '_blank',
         icon: 'tabler:file-text',

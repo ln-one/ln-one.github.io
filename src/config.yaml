@@ -1,5 +1,5 @@
 site:
-  name: 张春冉
+  name: Chunran Zhang
   site: 'https://ln-one.github.io'
   base: '/'
   trailingSlash: false
@@ -7,20 +7,20 @@ site:
 
 metadata:
   title:
-    default: 张春冉
-    template: '%s — 张春冉'
-  description: '张春冉的科研与软件系统个人主页。'
+    default: Chunran Zhang
+    template: '%s | Chunran Zhang'
+  description: 'Chunran Zhang: research in RAG, exact hybrid retrieval, AI agents, and retrieval systems.'
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: 张春冉
+    site_name: Chunran Zhang
     type: website
   twitter:
     cardType: summary_large_image
 
 i18n:
-  language: zh-CN
+  language: en
   textDirection: ltr
 
 apps:

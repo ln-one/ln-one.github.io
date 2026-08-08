@@ -3,12 +3,12 @@ export const headerData = {
     { text: 'Spectra', href: '/#spectra' },
     { text: 'EAHR', href: '/#eahr' },
     { text: 'StratuMind', href: '/#stratumind' },
-    { text: '经历', href: '/#background' },
-    { text: '联系', href: '/#contact' },
+    { text: 'Background', href: '/#background' },
+    { text: 'Contact', href: '/#contact' },
   ],
   actions: [
     {
-      text: '简历',
+      text: 'CV',
       href: '/files/Chunran-Zhang-CV.pdf',
       target: '_blank',
       icon: 'tabler:file-text',
@@ -19,27 +19,27 @@ export const headerData = {
 export const footerData = {
   links: [
     {
-      title: '导航',
+      title: 'Explore',
       links: [
         { text: 'Spectra', href: '/#spectra' },
         { text: 'EAHR', href: '/#eahr' },
         { text: 'StratuMind', href: '/#stratumind' },
-        { text: '经历', href: '/#background' },
+        { text: 'Background', href: '/#background' },
       ],
     },
     {
-      title: '联系',
+      title: 'Contact',
       links: [
-        { text: '邮箱', href: 'mailto:chronis@my.swjtu.edu.cn' },
+        { text: 'Email', href: 'mailto:chronis@my.swjtu.edu.cn' },
         { text: 'GitHub', href: 'https://github.com/ln-one' },
-        { text: '简历', href: '/files/Chunran-Zhang-CV.pdf' },
+        { text: 'CV', href: '/files/Chunran-Zhang-CV.pdf' },
       ],
     },
   ],
   secondaryLinks: [],
   socialLinks: [
-    { ariaLabel: '邮箱', icon: 'tabler:mail', href: 'mailto:chronis@my.swjtu.edu.cn' },
+    { ariaLabel: 'Email', icon: 'tabler:mail', href: 'mailto:chronis@my.swjtu.edu.cn' },
     { ariaLabel: 'GitHub', icon: 'tabler:brand-github', href: 'https://github.com/ln-one' },
   ],
-  footNote: `© ${new Date().getFullYear()} 张春冉 · 基于 AstroWind 构建`,
+  footNote: `© ${new Date().getFullYear()} Chunran Zhang. Built with AstroWind.`,
 };

@@ -48,21 +48,51 @@ const ARTIFACT_PALETTE: Record<KnowledgeNetworkArtifactTone, Record<Theme, strin
 
 const trace: KnowledgeNetworkTrace = {
   id: 'spectra-intelligent-construction',
-  query: '智能建造如何引用多个学科与产业知识空间？',
+  query: 'How can Intelligent Construction reference knowledge from multiple disciplines and industry?',
   currentWorkspaceId: 'intelligent-construction',
   workspaces: [
     {
       id: 'intelligent-construction',
-      name: '智能建造',
-      detail: '面向真实工程问题组织的跨学科课程空间。',
+      name: 'Intelligent Construction',
+      detail: 'An interdisciplinary course space organized around real engineering problems.',
       relation: 'current',
     },
-    { id: 'artificial-intelligence', name: '人工智能', detail: '算法与智能决策。', relation: 'referenced' },
-    { id: 'civil-engineering', name: '土木工程', detail: '工程对象与专业约束。', relation: 'referenced' },
-    { id: 'bim', name: 'BIM 与数字孪生', detail: '工程信息模型与数字映射。', relation: 'referenced' },
-    { id: 'iot', name: '物联网', detail: '现场数据采集与设备连接。', relation: 'referenced' },
-    { id: 'engineering-management', name: '工程管理', detail: '进度、成本、质量与安全。', relation: 'referenced' },
-    { id: 'industry-practice', name: '企业工程实践', detail: '真实项目、标准与经验。', relation: 'referenced' },
+    {
+      id: 'artificial-intelligence',
+      name: 'Artificial Intelligence',
+      detail: 'Algorithms and intelligent decision-making.',
+      relation: 'referenced',
+    },
+    {
+      id: 'civil-engineering',
+      name: 'Civil Engineering',
+      detail: 'Engineering objects and domain constraints.',
+      relation: 'referenced',
+    },
+    {
+      id: 'bim',
+      name: 'BIM and Digital Twins',
+      detail: 'Building information models and digital representations.',
+      relation: 'referenced',
+    },
+    {
+      id: 'iot',
+      name: 'Internet of Things',
+      detail: 'On-site data collection and connected devices.',
+      relation: 'referenced',
+    },
+    {
+      id: 'engineering-management',
+      name: 'Engineering Management',
+      detail: 'Schedule, cost, quality, and safety.',
+      relation: 'referenced',
+    },
+    {
+      id: 'industry-practice',
+      name: 'Industry Practice',
+      detail: 'Real projects, standards, and experience.',
+      relation: 'referenced',
+    },
   ],
   references: [
     ['artificial-intelligence', 'ai'],
@@ -77,25 +107,90 @@ const trace: KnowledgeNetworkTrace = {
     targetWorkspaceId: targetWorkspaceId ?? '',
   })),
   sources: [
-    source('computer-vision', 'artificial-intelligence', '计算机视觉', '施工目标与缺陷识别。', 'image', 'violet'),
-    source('machine-learning', 'artificial-intelligence', '机器学习案例', '模型训练、评估与工程应用。', 'notebook'),
-    source('structural-mechanics', 'civil-engineering', '结构力学', '结构受力与分析资料。', 'document'),
+    source(
+      'computer-vision',
+      'artificial-intelligence',
+      'Computer Vision',
+      'Detecting construction objects and defects.',
+      'image',
+      'violet'
+    ),
+    source(
+      'machine-learning',
+      'artificial-intelligence',
+      'Machine Learning Cases',
+      'Model training, evaluation, and engineering use.',
+      'notebook'
+    ),
+    source(
+      'structural-mechanics',
+      'civil-engineering',
+      'Structural Mechanics',
+      'Materials on structural loads and analysis.',
+      'document'
+    ),
     source(
       'construction-materials',
       'civil-engineering',
-      '土木工程材料',
-      '材料性能、检测与工程应用。',
+      'Civil Engineering Materials',
+      'Material properties, testing, and engineering use.',
       'pdf',
       'orange'
     ),
-    source('digital-twin', 'bim', '数字孪生模型', '工程对象的动态数字映射。', 'structured', 'blue'),
-    source('bim-model', 'bim', 'BIM 项目模型', '可用于课堂分析的工程模型。', 'structured'),
-    source('sensor-data', 'iot', '现场传感数据', '设备与环境形成的连续数据。', 'table', 'teal'),
-    source('edge-devices', 'iot', '边缘设备实验', '现场采集、通信与控制实验。', 'code'),
-    source('project-management', 'engineering-management', '项目管理案例', '进度、成本与协作案例。', 'spreadsheet'),
-    source('safety-standards', 'engineering-management', '施工安全规范', '行业安全标准与管理要求。', 'pdf', 'rose'),
-    source('real-projects', 'industry-practice', '真实工程案例', '企业项目任务、过程与复盘。', 'presentation'),
-    source('industry-standards', 'industry-practice', '行业标准', '行业规范、交付标准与工程要求。', 'pdf', 'green'),
+    source(
+      'digital-twin',
+      'bim',
+      'Digital Twin Model',
+      'A dynamic digital representation of an engineering object.',
+      'structured',
+      'blue'
+    ),
+    source('bim-model', 'bim', 'BIM Project Model', 'An engineering model for classroom analysis.', 'structured'),
+    source(
+      'sensor-data',
+      'iot',
+      'On-site Sensor Data',
+      'Continuous data from equipment and the environment.',
+      'table',
+      'teal'
+    ),
+    source(
+      'edge-devices',
+      'iot',
+      'Edge Device Lab',
+      'Experiments in on-site sensing, communication, and control.',
+      'code'
+    ),
+    source(
+      'project-management',
+      'engineering-management',
+      'Project Management Cases',
+      'Cases in scheduling, cost, and collaboration.',
+      'spreadsheet'
+    ),
+    source(
+      'safety-standards',
+      'engineering-management',
+      'Construction Safety Standards',
+      'Industry safety standards and management requirements.',
+      'pdf',
+      'rose'
+    ),
+    source(
+      'real-projects',
+      'industry-practice',
+      'Real Engineering Projects',
+      'Project tasks, processes, and reviews from industry.',
+      'presentation'
+    ),
+    source(
+      'industry-standards',
+      'industry-practice',
+      'Industry Standards',
+      'Industry specifications, delivery standards, and engineering requirements.',
+      'pdf',
+      'green'
+    ),
   ],
   chunks: [],
   paths: [],
@@ -220,7 +315,7 @@ export default function SpectraGraphDemo() {
   return (
     <div
       className="relative h-[420px] overflow-hidden rounded-3xl border border-slate-200 bg-[radial-gradient(circle_at_50%_50%,rgba(219,234,254,0.52),transparent_44%),radial-gradient(circle_at_18%_20%,rgba(248,250,252,0.8),transparent_36%),white] shadow-[0_24px_80px_rgba(30,64,175,0.10)] dark:border-slate-700 dark:bg-[radial-gradient(circle_at_50%_50%,rgba(37,99,235,0.16),transparent_44%),radial-gradient(circle_at_18%_20%,rgba(39,39,42,0.72),transparent_36%),#18181b] md:h-[500px] lg:h-[520px]"
-      aria-label="智能建造知识网络"
+      aria-label="Intelligent Construction knowledge network"
     >
       <PixiGraphViewCanvas
         engine={engine}
@@ -242,10 +337,10 @@ export default function SpectraGraphDemo() {
         className="absolute right-4 top-4 rounded-full border border-slate-200 bg-white/90 px-3 py-1.5 text-xs font-semibold text-slate-600 shadow-sm backdrop-blur hover:border-blue-300 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900/90 dark:text-slate-300"
         onClick={fitGraph}
       >
-        适配网络
+        Fit graph
       </button>
       <div className="pointer-events-none absolute bottom-4 left-5 text-xs text-slate-500 dark:text-slate-400">
-        拖动节点 · 滚轮缩放
+        Drag nodes · Scroll to zoom
       </div>
     </div>
   );
