@@ -1,4 +1,5 @@
 """Check built internal links, assets, publication records and demo removal."""
+import json
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit, unquote
@@ -25,5 +26,26 @@ for route in ('index.html', 'publications/index.html'):
         if f'https://arxiv.org/abs/{identifier}' not in html: errors.append(f'{route}: missing {identifier}')
 for private in ('AGENTS.md', 'MIGRATION.md', 'CONTENT_SOURCES.md', 'package.json', 'scripts'):
     if (root/private).exists(): errors.append(f'Build exposes {private}')
+# Search results must lead to real pages and publication anchors.
+search_records = json.loads((root / 'assets/search.json').read_text())
+publication_records = [item for item in search_records if item.get('kind') == 'publication']
+if len(publication_records) < 2:
+    errors.append('Search index is missing publication records')
+class Anchors(HTMLParser):
+    def __init__(self):
+        super().__init__(); self.ids = set()
+    def handle_starttag(self, tag, attrs):
+        identifier = dict(attrs).get('id')
+        if identifier: self.ids.add(identifier)
+for item in search_records:
+    url = urlsplit(item['url'])
+    target = root / unquote(url.path.lstrip('/'))
+    if target.is_dir(): target = target / 'index.html'
+    if not target.is_file():
+        errors.append(f"Search index: missing {item['url']}")
+    elif url.fragment:
+        parser = Anchors(); parser.feed(target.read_text())
+        if unquote(url.fragment) not in parser.ids:
+            errors.append(f"Search index: missing anchor {item['url']}")
 if errors: raise SystemExit('\n'.join(errors))
-print('Passed: internal links/assets, both preprints, demo removal, and source-file exclusions.')
+print('Passed: internal links/assets, both preprints, demo removal, source-file exclusions, and search destinations.')

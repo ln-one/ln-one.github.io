@@ -101,7 +101,8 @@ data files are optional; do not add empty sections merely to use them.
   controls accessible names and keep keyboard navigation usable.
 - Images are static assets, without an automatic Astro image pipeline. Supply
   useful alt text, dimensions, and appropriately sized files.
-- Keep existing font licenses and template attribution. The personal logo has
+- Keep existing font licenses, `LICENSE`, and template attribution in `README.md`.
+  The owner has removed the visible footer credit; do not reintroduce it. The personal logo has
   separate licensing documented in `README.md`; do not treat it as MIT artwork.
 
 ## Academic Content and Publications

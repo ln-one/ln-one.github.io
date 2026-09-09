@@ -1,44 +1,8 @@
-<footer class="site-footer desktop-only">
-  <div class="footer-grid">
-    <div>
-      <h2 class="footer-heading">About</h2>
-      <p>
-        {{ site.name }}<br>
-        {{ site.title }}<br>
-        {{ site.institution }}
-      </p>
-    </div>
-    <div>
-      <h2 class="footer-heading">Contact</h2>
-      <p>
-        <a href="mailto:{{ site.email }}">{% include icon.html name="envelope" %} {{ site.email }}</a><br>
-      </p>
-    </div>
-    <div>
-      <h2 class="footer-heading">Profiles</h2>
-      <p>
-        {% if site.links.google_scholar and site.links.google_scholar != "" %}<a href="{{ site.links.google_scholar }}">{% include icon.html name="google-scholar" %} Google Scholar</a><br>{% endif %}
-        {% if site.links.orcid and site.links.orcid != "" %}<a href="{{ site.links.orcid }}">{% include icon.html name="orcid" %} ORCID</a><br>{% endif %}
-        {% if site.links.github and site.links.github != "" %}<a href="{{ site.links.github }}">{% include icon.html name="github" %} GitHub</a><br>{% endif %}
-        {% if site.links.researchgate and site.links.researchgate != "" %}<a href="{{ site.links.researchgate }}">{% include icon.html name="researchgate" %} ResearchGate</a><br>{% endif %}
-      </p>
-    </div>
-  </div>
-  <div class="footer-grid">
-    <div class="footer-copyright" style="grid-column: 1 / -1;">
-      &copy; {{ "now" | date: "%Y" }} {{ site.name | escape }}
-      <span class="footer-credit"> · <a href="https://github.com/sbryngelson/academic-website-template">Academic website template</a></span>
-    </div>
-  </div>
-</footer>
-
-<footer class="site-footer footer-compact mobile-only">
+<footer class="site-footer">
   <div class="footer-row">
     <span>&copy; {{ "now" | date: "%Y" }} {{ site.name | escape }}</span>
     {% if site.email %}<a href="mailto:{{ site.email }}">Contact</a>{% endif %}
-    <a class="footer-credit" href="https://github.com/sbryngelson/academic-website-template">Academic website template</a>
   </div>
 </footer>
-
 
 <script src="{{ '/assets/js/site.js' | relative_url }}"></script>

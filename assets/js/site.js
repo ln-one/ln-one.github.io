@@ -105,25 +105,42 @@
     wrapper.style.position = 'relative';
 
     var btn = document.createElement('button');
+    btn.type = 'button';
     btn.className = 'copy-btn';
-    btn.innerHTML = iconHTML('copy');
-    btn.title = 'Copy to clipboard';
+    btn.innerHTML = iconHTML('copy') + '<span class="copy-label">Copy</span>';
+    btn.title = 'Copy BibTeX';
     btn.setAttribute('aria-label', 'Copy BibTeX to clipboard');
+    var status = document.createElement('p');
+    status.className = 'copy-status';
+    status.setAttribute('role', 'status');
+    status.setAttribute('aria-live', 'polite');
+    var resetTimer;
 
-    btn.addEventListener('click', function () {
-      navigator.clipboard.writeText(pre.textContent.trim()).then(function () {
-        btn.innerHTML = iconHTML('check');
+    btn.addEventListener('click', async function () {
+      clearTimeout(resetTimer);
+      btn.disabled = true;
+      status.textContent = '';
+      try {
+        if (!navigator.clipboard || !navigator.clipboard.writeText) throw new Error('Clipboard unavailable');
+        await navigator.clipboard.writeText(pre.textContent.trim());
+        btn.innerHTML = iconHTML('check') + '<span class="copy-label">Copied</span>';
         btn.classList.add('copied');
-        setTimeout(function () {
-          btn.innerHTML = iconHTML('copy');
-          btn.classList.remove('copied');
-        }, 2000);
-      });
+        status.textContent = 'BibTeX copied.';
+      } catch (error) {
+        btn.innerHTML = iconHTML('copy') + '<span class="copy-label">Retry</span>';
+        btn.classList.remove('copied');
+        status.textContent = 'Could not copy automatically. Select the BibTeX text and copy it manually, or try again.';
+      } finally {
+        btn.disabled = false;
+      }
+      resetTimer = setTimeout(function () {
+        btn.innerHTML = iconHTML('copy') + '<span class="copy-label">Copy</span>';
+        btn.classList.remove('copied');
+      }, 2000);
     });
 
     pre.parentNode.insertBefore(wrapper, pre);
-    wrapper.appendChild(pre);
-    wrapper.appendChild(btn);
+    wrapper.append(btn, pre, status);
   });
 
   // ----- Back to Top Button -----
@@ -247,6 +264,28 @@
     });
   }
 
+  if (searchResultsEl) {
+    searchResultsEl.addEventListener('click', function (e) {
+      var link = e.target.closest('a');
+      if (!link || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var destination = new URL(link.href);
+      if (destination.pathname !== location.pathname || !destination.hash) return;
+      var target = document.getElementById(decodeURIComponent(destination.hash.slice(1)));
+      if (!target) return;
+      if (searchInput) {
+        searchInput.value = '';
+        document.querySelectorAll('[data-pub-searchable]').forEach(function (entry) { entry.style.display = ''; });
+      }
+      if (navMenu && navToggler) {
+        navMenu.classList.remove('show');
+        navToggler.setAttribute('aria-expanded', 'false');
+      }
+      // Native anchor navigation scrolls; dialog close restores focus to the paper.
+      searchOpener = target;
+      closeSearch();
+    });
+  }
+
   document.addEventListener('keydown', function (e) {
     if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k' && searchOverlay) {
       e.preventDefault();
@@ -269,6 +308,8 @@
     var q = query.toLowerCase();
     var matches = data.filter(function (item) {
       return item.title.toLowerCase().includes(q) || item.content.toLowerCase().includes(q);
+    }).sort(function (a, b) {
+      return Number(b.kind === 'publication') - Number(a.kind === 'publication');
     });
     if (matches.length === 0) {
       showSearchMessage('No results for "' + query + '"');
@@ -285,7 +326,15 @@
       title.textContent = item.title;
       var snippet = document.createElement('div');
       snippet.className = 'search-result-snippet';
-      snippet.textContent = item.content.substring(0, 150).trim() + '...';
+      var matchAt = item.content.toLowerCase().indexOf(q);
+      var start = Math.max(0, matchAt - 45);
+      if (start > 0) {
+        var nextSpace = item.content.indexOf(' ', start);
+        if (nextSpace >= 0 && nextSpace < matchAt) start = nextSpace + 1;
+      }
+      var end = Math.min(item.content.length, Math.max(start + 150, matchAt + query.length + 45));
+      snippet.textContent = (start > 0 ? '…' : '') + item.content.slice(start, end).trim() +
+        (end < item.content.length ? '…' : '');
       link.append(title, snippet);
       results.appendChild(link);
     });

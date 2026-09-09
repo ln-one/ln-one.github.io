@@ -35,6 +35,19 @@ module SearchIndex
       'content' => text(doc.output.to_s)
     }
   end
+  # Read explicit escaped metadata from rendered publication entries. Only the
+  # canonical publications page contributes records, avoiding homepage duplicates.
+  def self.publications(site, doc)
+    doc.output.to_s.scan(/<div\b[^>]*\bdata-pub-searchable[^>]*>/).map do |tag|
+      attrs = tag.scan(/([\w-]+)="([^"]*)"/).to_h
+      {
+        'title' => CGI.unescapeHTML(attrs.fetch('data-search-title')),
+        'url' => site.config['baseurl'].to_s + doc.url + '#' + attrs.fetch('id'),
+        'content' => CGI.unescapeHTML(attrs.fetch('data-search-content')).gsub(/\s+/, ' ').strip,
+        'kind' => 'publication'
+      }
+    end
+  end
 end
 
 Jekyll::Hooks.register :site, :post_render do |site|
@@ -45,6 +58,7 @@ Jekyll::Hooks.register :site, :post_render do |site|
   end
 
   index = Jekyll::PageWithoutAFile.new(site, site.source, 'assets', 'search.json')
-  index.output = JSON.generate(docs.map { |d| SearchIndex.entry(site, d) })
+  publications = docs.select { |d| d.url == '/publications/' }.flat_map { |d| SearchIndex.publications(site, d) }
+  index.output = JSON.generate(publications + docs.map { |d| SearchIndex.entry(site, d) })
   site.pages << index
 end

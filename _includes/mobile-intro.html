@@ -2,7 +2,6 @@
 <a href="{{ '/about/' | relative_url }}" class="home-portrait-link" aria-label="About {{ site.name | escape }}">
 <img src="{{ site.photo | prepend: '/images/' | relative_url }}" class="home-portrait" alt="{{ site.name | escape }}" width="140" height="140" fetchpriority="high">
 </a>
-<div>
 <h1 class="home-hero" id="home-name">{{ site.name }}</h1>
 <p class="home-identity">{{ site.title }} at <strong>{{ site.institution }}</strong>.</p>
 <div class="chip-container" role="group" aria-label="Research interests">
@@ -17,6 +16,5 @@
 {% if site.links.github and site.links.github != "" %}<a href="{{ site.links.github }}">GitHub</a>{% endif %}
 {% if site.links.orcid and site.links.orcid != "" %}<a href="{{ site.links.orcid }}">ORCID</a>{% endif %}
 </nav>
-</div>
 </section>
 

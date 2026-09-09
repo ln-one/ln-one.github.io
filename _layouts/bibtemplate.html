@@ -38,7 +38,9 @@
   {% if entry.type == 'unpublished' and entry.doi %}{% assign arxiv_id = entry.doi %}{% endif %}
 {% endif %}
 
-<div class="pub-entry" data-pub-searchable>
+<div class="pub-entry" id="pub-{{ entry.key }}" tabindex="-1" data-pub-searchable
+  data-search-title="{{ entry.acronym | escape }}{% if entry.acronym %} — {% endif %}{{ entry.title | escape }}"
+  data-search-content="{{ entry.summary | escape }} {{ entry.author | escape }} {{ entry.year | escape }} {{ entry.arxiv | escape }}">
   {% if entry.year %}<span class="year-badge">{{ entry.year }}</span>{% endif %}
   <div class="text-justify">{{ ref }}</div>
 

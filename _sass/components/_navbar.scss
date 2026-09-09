@@ -138,3 +138,13 @@
     margin-top: var(--space-3);
   }
 }
+
+// Use the theme's text color rather than Bootstrap's embedded dark SVG strokes.
+.navbar-toggler-icon {
+  background-image: linear-gradient(currentColor, currentColor),
+    linear-gradient(currentColor, currentColor), linear-gradient(currentColor, currentColor);
+  background-size: 100% 2px;
+  background-position: center 20%, center 50%, center 80%;
+  background-repeat: no-repeat;
+}
+.navbar-toggler { color: var(--text-primary); min-height: 44px; min-width: 44px; }

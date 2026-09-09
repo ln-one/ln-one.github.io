@@ -147,3 +147,32 @@ ol.bibliography {
 ol.bibliography > li + li {
   border-top: 1px solid var(--border-color);
 }
+
+.pub-entry {
+  scroll-margin-top: 6rem;
+  &:target { outline: 2px solid var(--accent); outline-offset: 6px; }
+}
+.copy-status {
+  margin: var(--space-2) 0 0;
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+  &:empty { display: none; }
+}
+.copy-label { display: none; }
+.copy-wrapper pre { padding-right: 3.5rem; }
+
+@media (hover: none), (pointer: coarse), (max-width: 768px) {
+  .copy-btn {
+    position: static;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-height: 44px;
+    min-width: 44px;
+    padding: var(--space-2) var(--space-3);
+    opacity: 1;
+  }
+  .copy-label { display: inline; }
+  .copy-wrapper pre { padding-right: var(--space-4); }
+}
