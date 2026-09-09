@@ -139,14 +139,7 @@
     .chip-container { margin: 0; }
   }
 
-  .home-portrait {
-    width: 96px;
-    height: 96px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid var(--bg-card);
-    box-shadow: var(--shadow-sm);
-  }
+  .home-portrait-link { width: 96px; height: 96px; }
 
   .home-contact {
     display: flex;

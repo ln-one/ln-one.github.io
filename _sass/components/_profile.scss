@@ -1,3 +1,27 @@
+// Crop the existing photograph around the face; keep the original asset intact.
+.portrait-frame {
+  display: inline-block;
+  width: 140px;
+  height: 140px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 3px solid var(--bg-card);
+  box-shadow: var(--shadow-sm);
+  background-image: none;
+  padding: 0;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    transform: scale(1.35);
+    transform-origin: 49% 25%;
+    transition: transform var(--transition-slow);
+  }
+}
+
 // =============================================================
 // Profile card — home page sidebar
 // =============================================================
@@ -27,22 +51,9 @@
     background: linear-gradient(90deg, var(--accent), var(--accent-hover));
   }
 
-  .profile-photo {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: var(--space-4);
-    border: 3px solid var(--bg-primary);
-    box-shadow:
-      0 0 0 1px var(--border-color),
-      var(--shadow-md);
-    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-  }
+  .portrait-frame { margin-bottom: var(--space-4); }
 
-  &:hover .profile-photo {
-    transform: scale(1.04);
-  }
+  &:hover .profile-photo { transform: scale(1.4); }
 
   .profile-name {
     font-family: 'Source Serif 4', Georgia, serif;

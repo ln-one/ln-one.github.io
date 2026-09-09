@@ -1,5 +1,5 @@
 <section class="home-intro mobile-only" aria-labelledby="home-name" markdown="0">
-<a href="{{ '/about/' | relative_url }}" class="home-portrait-link" aria-label="About {{ site.name | escape }}">
+<a href="{{ '/about/' | relative_url }}" class="home-portrait-link portrait-frame" aria-label="About {{ site.name | escape }}">
 <img src="{{ site.photo | prepend: '/images/' | relative_url }}" class="home-portrait" alt="{{ site.name | escape }}" width="140" height="140" fetchpriority="high">
 </a>
 <h1 class="home-hero" id="home-name">{{ site.name }}</h1>
@@ -15,6 +15,7 @@
 {% if site.links.google_scholar and site.links.google_scholar != "" %}<a href="{{ site.links.google_scholar }}">Google Scholar</a>{% endif %}
 {% if site.links.github and site.links.github != "" %}<a href="{{ site.links.github }}">GitHub</a>{% endif %}
 {% if site.links.orcid and site.links.orcid != "" %}<a href="{{ site.links.orcid }}">ORCID</a>{% endif %}
+{% if site.links.researchgate and site.links.researchgate != "" %}<a href="{{ site.links.researchgate }}">ResearchGate</a>{% endif %}
 </nav>
 </section>
 

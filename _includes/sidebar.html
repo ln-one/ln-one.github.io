@@ -1,11 +1,10 @@
 <div class="profile-card">
-<a href="{{ '/about' | relative_url }}">
+<a href="{{ '/about' | relative_url }}" class="portrait-frame">
 <img src="{{ site.photo | prepend: '/images/' | relative_url }}" class="profile-photo" alt="{{ site.name }}" width="140" height="140" fetchpriority="high">
 </a>
 <p class="profile-name">{{ site.name }}</p>
 <p class="profile-title">{{ site.title }}</p>
 <p class="profile-institution">{{ site.institution }}</p>
-<p class="profile-institution">School of Computing and Artificial Intelligence<br>Chengdu, China</p>
 <div class="profile-links">
 {% if site.email %}<a href="mailto:{{ site.email }}" class="icon-link" title="Email" aria-label="Email">{% include icon.html name="envelope" %}</a>{% endif %}
 {% if site.links.cv and site.links.cv != "" %}<a href="{{ site.links.cv | prepend: '/' | relative_url }}" class="icon-link" title="CV" aria-label="CV">{% include icon.html name="cv" %}</a>{% endif %}

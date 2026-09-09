@@ -30,3 +30,4 @@ Chengdu, Sichuan, China
 - **Google Scholar:** [Publications and citations](https://scholar.google.com/citations?user=nxuJYO0AAAAJ&hl=en)
 - **ORCID:** [0009-0005-8865-2090](https://orcid.org/0009-0005-8865-2090)
 - **GitHub:** [ln-one](https://github.com/ln-one)
+- **ResearchGate:** [Chunran Zhang]({{ site.links.researchgate }})

@@ -1,7 +1,19 @@
 <footer class="site-footer">
-  <div class="footer-row">
-    <span>&copy; {{ "now" | date: "%Y" }} {{ site.name | escape }}</span>
-    {% if site.email %}<a href="mailto:{{ site.email }}">Contact</a>{% endif %}
+  <div class="footer-content">
+    <div class="footer-links">
+      <section aria-labelledby="footer-contact-heading">
+        <h2 id="footer-contact-heading">Contact</h2>
+        {% if site.email %}<a href="mailto:{{ site.email }}">{% include icon.html name="envelope" %} {{ site.email }}</a>{% endif %}
+        {% if site.links.github and site.links.github != "" %}<a href="{{ site.links.github }}">{% include icon.html name="github" %} GitHub</a>{% endif %}
+      </section>
+      <nav aria-labelledby="footer-profiles-heading">
+        <h2 id="footer-profiles-heading">Academic profiles</h2>
+        {% if site.links.google_scholar and site.links.google_scholar != "" %}<a href="{{ site.links.google_scholar }}">{% include icon.html name="google-scholar" %} Google Scholar</a>{% endif %}
+        {% if site.links.researchgate and site.links.researchgate != "" %}<a href="{{ site.links.researchgate }}">{% include icon.html name="researchgate" %} ResearchGate</a>{% endif %}
+        {% if site.links.orcid and site.links.orcid != "" %}<a href="{{ site.links.orcid }}">{% include icon.html name="orcid" %} ORCID</a>{% endif %}
+      </nav>
+    </div>
+    <p class="footer-copyright">&copy; {{ "now" | date: "%Y" }} {{ site.name | escape }}</p>
   </div>
 </footer>
 

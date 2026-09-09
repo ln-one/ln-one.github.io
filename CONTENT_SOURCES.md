@@ -11,3 +11,5 @@ Verified 2026-09-09.
 - Both papers are labeled as preprints; no conference/journal acceptance claimed.
 
 - Research interests corrected directly by the owner: information retrieval, data mining, and artificial intelligence.
+
+- ResearchGate profile URL supplied by the owner: https://www.researchgate.net/profile/Chunran-Zhang. No profile metrics or additional credentials inferred.
