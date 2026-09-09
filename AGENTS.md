@@ -1,106 +1,156 @@
-# AstroWind Agent Instructions
+# Academic Website Agent Instructions
 
 ## Project Overview
 
-AstroWind is a free, open-source website template built with **Astro v6** and **Tailwind CSS v4**. It generates a fully static site optimized for performance, SEO, and accessibility.
+This is Chunran Zhang's English personal academic website, based on
+[sbryngelson/academic-website-template](https://github.com/sbryngelson/academic-website-template).
+It builds a static site with **Jekyll 4.4**, **Jekyll Scholar 7.3**, Liquid,
+Markdown, SCSS, selected Bootstrap 5.3 styles, and vanilla JavaScript.
 
-**Stack:** Astro v6 | Tailwind CSS v4 | TypeScript 5.9 | MDX | Sharp
+The project has migrated from AstroWind. Do not apply the old Astro, Tailwind,
+TypeScript, MDX, or Sharp workflows. See `MIGRATION.md` for the previous workspace
+backup and `README.md` for current setup instructions.
 
-## Quick Reference
+## Code Search
 
-| Command           | Purpose                             |
-| ----------------- | ----------------------------------- |
-| `npm run dev`     | Start dev server at localhost:4321  |
-| `npm run build`   | Production build to `./dist/`       |
-| `npm run preview` | Preview production build locally    |
-| `npm run check`   | Run astro check + ESLint + Prettier |
-| `npm run fix`     | Auto-fix ESLint + Prettier issues   |
+<!-- CODEGRAPH_START -->
+### CodeGraph
 
-**Node.js requirement:** >= 22.12.0
+In repositories indexed by CodeGraph (a `.codegraph/` directory exists at the repo root), reach for it BEFORE grep/find or reading files when you need to understand or locate code:
 
-## Architecture
+- **MCP tool** (when available): `codegraph_explore` answers most code questions in one call — the relevant symbols' verbatim source plus the call paths between them, including dynamic-dispatch hops grep can't follow. Name a file or symbol in the query to read its current line-numbered source. If it's listed but deferred, load it by name via tool search.
+- **Shell** (always works): `codegraph explore "<symbol names or question>"` prints the same output.
 
-### Directory Structure
+If there is no `.codegraph/` directory, skip CodeGraph entirely — indexing is the user's decision.
+<!-- CODEGRAPH_END -->
 
-```
-src/
-  assets/styles/tailwind.css   # Tailwind v4 config (themes, utilities, plugins)
-  components/
-    common/        # Shared: Image, Metadata, Analytics, ToggleTheme
-    ui/            # Primitives: Button, Headline, WidgetWrapper, ItemGrid
-    widgets/       # Page sections: Hero, Features, Pricing, Header, Footer
-    blog/          # Blog: SinglePost, List, Pagination, Tags
-    CustomStyles.astro  # CSS variables for colors and fonts
-  content.config.ts    # Content Collections schema (Astro v6 location)
-  data/post/           # Blog posts (.md, .mdx)
-  layouts/             # Layout.astro, PageLayout.astro, MarkdownLayout.astro
-  pages/               # File-based routing
-  utils/               # blog.ts, images.ts, permalinks.ts, frontmatter.ts
-  config.yaml          # Site configuration (loaded as virtual module)
-  navigation.ts        # Navigation structure
-  types.d.ts           # TypeScript type definitions
-vendor/integration/    # Custom Astro integration for config loading
-```
+### ast-grep
 
-### Path Aliases
+`ast-grep` is installed for syntax-aware, tree-sitter structural search and rewrites.
 
-Use `~/` to import from `src/`:
+- Use **CodeGraph** for symbol definitions, signatures, callers/callees, dependency graphs, and change impact.
+- Prefer **ast-grep** for repeated code-shape questions, API usage patterns, structural conventions, and guarded migrations where supported by its parser.
+- Use **rg** for literal text, configuration, Liquid/Markdown text, logs, comments, and exact strings.
+- Before a broad API migration or anti-pattern cleanup, run an ast-grep pattern to measure and inspect candidates.
+- Preview rewrite matches before applying changes, then validate affected files with available project checks. Do not use ast-grep to infer call graphs or blast radius.
 
-```typescript
-import Image from '~/components/common/Image.astro';
-import { SITE } from 'astrowind:config';
+## Local Development
+
+Requires Ruby and Bundler; the documented local baseline is Ruby 3.4+.
+CI tests Ruby 3.4 and 4.0, and deployment uses Ruby 4.0.
+Python 3 is required for the local site checker. npm is only a command wrapper;
+there are no Node package dependencies to install.
+
+```sh
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH" # Homebrew Ruby on Apple Silicon
+bundle install
 ```
 
-### Configuration System
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Serve at `http://127.0.0.1:4321/` |
+| `npm run build` | Build with strict front matter into `_site/` |
+| `npm run check` | Check the already-built `_site/` with `scripts/check_site.py` |
 
-Site config lives in `src/config.yaml` and is loaded as a Vite virtual module `astrowind:config` by the custom integration in `vendor/integration/`. Exports: `SITE`, `I18N`, `METADATA`, `APP_BLOG`, `UI`, `ANALYTICS`.
+`scripts/jekyll.sh` selects Homebrew Ruby when available, then runs
+`bundle exec jekyll`. There are no `preview` or `fix` npm scripts.
+Restart the development server after changing `_config.yml`.
 
-## Tailwind CSS v4
+## Architecture and Editing Locations
 
-Configuration is CSS-first in `src/assets/styles/tailwind.css`:
+| Path | Responsibility |
+| --- | --- |
+| `_config.yml` | Identity, links, navigation, accent color, site URL, Scholar, plugins, build exclusions |
+| `_pages/home.md` | Homepage introduction and selected preprints |
+| `_pages/about.md` | Education and contact details |
+| `_pages/publications.md` | Full publication list and filter |
+| `_pages/allnews.md` | News archive |
+| `_pages/404.md` | Not-found page |
+| `_data/news.yml` | News entries, newest first; `archived: true` hides old updates from home |
+| `_data/pi.yml` | Optional short education details consumed by the desktop sidebar |
+| `assets/ref.bib` | Publication metadata, summaries, selection, and resource links |
+| `_layouts/` | Page layouts, `research-card` for mobile homepage cards, and `bibtemplate` for full citations |
+| `_includes/` | Head metadata, navigation, sidebar, footer, SVG icons, analytics, and optional math |
+| `assets/main.scss` | SCSS entry point and selected Bootstrap imports |
+| `_sass/base/` | Fonts, design variables, typography, reset, and icons |
+| `_sass/components/`, `_sass/layouts/`, `_sass/utilities/` | Site styling, responsive layout, dark mode, and print styles |
+| `assets/js/site.js` | Mobile menu, theme toggle, publication filtering, BibTeX, and site search |
+| `_plugins/` | Ruby extensions, Markdown support, and search-index generation |
+| `assets/fonts/` | Self-hosted fonts and their licenses |
+| `images/`, `papers/` | Site images and optional local PDFs |
+| `scripts/` | Jekyll wrapper and generated-site validation |
 
-- **Theme tokens:** `@theme { --color-primary: var(--aw-color-primary); ... }`
-- **Custom utilities:** `@utility bg-page { ... }`
-- **Dark mode:** Class-based via `@variant dark (&:where(.dark, .dark *))`
-- **Plugins:** `@plugin "@tailwindcss/typography"`
-- **Custom variant:** `@custom-variant intersect (&:not([no-intersect]))`
+`_site/` and `.jekyll-cache/` are generated output; edit their source files instead.
+Treat `vendor/` as installed dependencies and `_sass/bootstrap/` as vendored styles.
+The `_posts/` directory exists, but currently contains no blog posts. Other template
+data files are optional; do not add empty sections merely to use them.
 
-CSS variables for colors/fonts are defined in `src/components/CustomStyles.astro` with light/dark theme variants.
+## Implementation Conventions
 
-The Vite plugin `@tailwindcss/vite` is configured in `astro.config.ts` (not as an Astro integration).
+- Use YAML front matter (`title`, `layout`, `permalink`) and Liquid for pages.
+  The homepage uses `homelay`; ordinary pages use `page`.
+- Generate internal links with `relative_url` and canonical/social URLs with
+  `absolute_url` so the site also works under a base path.
+- Use `markdown="1"` when Markdown must render inside HTML containers and
+  `markdown="0"` for markup that should remain HTML.
+- Reuse CSS custom properties in `_sass/base/_variables.scss` and existing
+  components. Configure the accent in `_config.yml`.
+- Dark mode uses `data-bs-theme` on the document element and a saved `theme`
+  preference. Bootstrap JavaScript is not loaded; interactions live in `site.js`.
+- Reuse the inline SVG sprite through `_includes/icon.html`. Give icon-only
+  controls accessible names and keep keyboard navigation usable.
+- Images are static assets, without an automatic Astro image pipeline. Supply
+  useful alt text, dimensions, and appropriately sized files.
+- Keep existing font licenses and template attribution. The personal logo has
+  separate licensing documented in `README.md`; do not treat it as MIT artwork.
 
-### Class Merging
+## Academic Content and Publications
 
-Components use `twMerge` from `tailwind-merge` v3 for conditional class composition.
+- Consult `CONTENT_SOURCES.md` before changing biographical or research claims.
+  Use owner-provided information and verified sources; do not infer awards,
+  citation counts, acceptance status, or unspecified education details.
+- Current research interests are information retrieval, data mining, and
+  artificial intelligence. The two current manuscripts are labeled as preprints.
+  Update status only when supported by new evidence.
+- Maintain publication records in `assets/ref.bib`. The homepage selects
+  `selected = {true}` entries: desktop uses full citations and mobile uses
+  `research-card`. The publications page retains full citations. `acronym`
+  provides the short card label.
+- News uses `short_headline` on the homepage when supplied; the archive keeps
+  every entry with its full `headline`.
+- `_layouts/bibtemplate.html` renders summaries, resource links, and expandable
+  BibTeX/abstract blocks. `scholar.last_name` and `scholar.first_name` control
+  owner-name highlighting; `bibtex_skip_fields` excludes template-only fields.
+- `file` refers to a PDF in `papers/`; `arxiv` stores an identifier. Fields such as
+  `code`, `slides`, `video`, `poster`, and `data` contain resource URLs.
+- Keep missing optional links blank. Add CV or other credentials only when the
+  corresponding material is available.
 
-## Content Collections
+## Verification
 
-Defined in `src/content.config.ts` using the Astro v6 Content Layer API with `glob()` loader. Posts are in `src/data/post/` as `.md` or `.mdx` files.
+After changes, run `npm run build` followed by `npm run check`.
+The checker validates built internal links/assets, both current preprints,
+demo-content removal, and source-file exclusions. It does not replace browser
+checks, validate external destinations, or run Astro, ESLint, or Prettier.
 
-Post frontmatter: `title` (required), `publishDate`, `updateDate`, `draft`, `excerpt`, `image`, `category`, `tags`, `author`, `metadata`.
+For changes affecting rendered content, styles, or interactions, also inspect:
 
-## Component Patterns
+- Homepage, About, and Publications at desktop and mobile widths.
+- Light/dark themes, mobile navigation, and visible keyboard focus.
+- Relevant search/filter behavior, BibTeX expansion/copy, and affected links.
 
-- Props extend interfaces from `~/types`
-- Use `class:list` for conditional classes
-- Use `twMerge()` when accepting className overrides
-- Use named slots for layout composition
-- Widget components accept standardized props (see `~/types`)
+Documentation-only changes require review of the diff and referenced paths;
+no browser check is needed when rendered output is unaffected. Report any checks
+that could not be completed. Do not claim visual verification from a build alone.
 
-## Image Handling
+## Deployment
 
-`src/components/common/Image.astro` supports:
+`.github/workflows/deploy.yml` builds and deploys pushes to `main` through GitHub
+Actions, with production `url` and `baseurl` supplied by GitHub Pages settings.
+The configured production URL is `https://ln-one.github.io/`.
+PR CI separately builds and runs HTMLProofer for internal links.
+Both workflows rasterize favicon assets during their builds.
 
-- Local images via `astro:assets` (optimized by Sharp)
-- Remote images via Unpic CDN
-- Allowed domains (for providers Unpic can't detect, processed by Sharp): `cdn.pixabay.com`
-
-Hero images use `loading="eager"` and `fetchpriority="high"`.
-
-## Verification Checklist
-
-After changes, always verify:
-
-1. `npm run build` succeeds
-2. `npm run check` passes (astro check + ESLint + Prettier)
-3. Visual check in browser: homepage, blog, dark mode, mobile menu
+A push to `main` triggers publication; do not push solely to preview a local edit.
+Keep internal documentation and tooling excluded in `_config.yml`, including
+`AGENTS.md`, `MIGRATION.md`, `CONTENT_SOURCES.md`, `package.json`, and `scripts/`.

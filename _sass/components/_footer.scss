@@ -56,3 +56,29 @@
     text-transform: uppercase;
   }
 }
+
+.site-footer.footer-compact {
+  border-top: 1px solid var(--border-color);
+  padding: var(--space-6) 0;
+  margin-top: var(--space-12);
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+
+  .footer-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-6);
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+  }
+
+  a { color: var(--text-secondary); }
+  a:hover { color: var(--accent); }
+  .footer-credit { margin-left: auto; }
+
+  @media (max-width: 480px) {
+    .footer-credit { width: 100%; margin-left: 0; }
+  }
+}

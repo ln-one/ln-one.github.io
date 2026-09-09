@@ -3,11 +3,14 @@ layout: default
 ---
 
 <div class="home-grid">
+  {% include mobile-intro.html %}
   <div class="home-content">
     {{ content }}
   </div>
-
-  <div>
+  <aside class="home-sidebar desktop-only" aria-label="Profile and news">
     {% include sidebar.html %}
+  </aside>
+  <div class="mobile-only home-news">
+    {% include news.html %}
   </div>
 </div>

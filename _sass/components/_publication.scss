@@ -61,14 +61,8 @@ ol.bibliography {
 
 // Collapsible bibtex/abstract
 .pub-collapse {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height var(--transition-slow);
-
-  &.show {
-    max-height: 1000px;
-    padding-top: var(--space-3);
-  }
+  padding-top: var(--space-3);
+  &[hidden] { display: none; }
 
   pre {
     background-color: var(--bg-secondary);
@@ -104,7 +98,8 @@ ol.bibliography {
   opacity: 0;
   z-index: 1;
 
-  .copy-wrapper:hover & {
+  .copy-wrapper:hover &,
+  &:focus-visible {
     opacity: 1;
   }
 

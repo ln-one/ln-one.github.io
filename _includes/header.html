@@ -19,7 +19,7 @@
         {% endfor %}
       </ul>
       <div class="d-flex align-items-center" style="gap: var(--space-2);">
-        <button class="search-toggle" id="searchToggle" aria-label="Search site">
+        <button class="search-toggle" id="searchToggle" aria-label="Search site" aria-haspopup="dialog" aria-controls="searchOverlay">
           {% include icon.html name="search" %}
         </button>
         {% unless site.dark_mode == false %}
@@ -32,14 +32,17 @@
   </div>
 </nav>
 
-<!-- Search overlay -->
-<div class="search-overlay" id="searchOverlay">
+<!-- Native modal keeps background content out of keyboard navigation. -->
+<dialog class="search-overlay" id="searchOverlay" aria-labelledby="search-title">
 <div class="search-modal">
+<h2 id="search-title" class="visually-hidden">Search site</h2>
 <div class="search-input-wrapper">
 {% include icon.html name="search" class="search-input-icon" %}
-<input type="text" class="search-input" id="searchInput" placeholder="Search pages..." autocomplete="off">
-<kbd class="search-kbd">ESC</kbd>
+<label for="searchInput" class="visually-hidden">Search pages</label>
+<input type="search" class="search-input" id="searchInput" placeholder="Search pages..." autocomplete="off" autofocus>
+<button type="button" class="search-close" id="searchClose" aria-label="Close search">Close <kbd class="search-kbd">Esc</kbd></button>
 </div>
+<p id="searchStatus" class="visually-hidden" role="status" aria-live="polite"></p>
 <div class="search-results" id="searchResults"></div>
 </div>
-</div>
+</dialog>

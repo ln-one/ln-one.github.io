@@ -1,5 +1,5 @@
 // =============================================================
-// Site search — overlay modal with lunr.js
+// Site search — native modal dialog
 // =============================================================
 
 .search-toggle {
@@ -25,42 +25,47 @@
   }
 }
 
-// Overlay backdrop
+// Native modal supplies focus containment and an inert background.
 .search-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 2000;
-  background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(4px);
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding-top: 15vh;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--transition-base);
-
-  &.open {
-    opacity: 1;
-    pointer-events: auto;
-  }
-}
-
-// Modal container
-.search-modal {
-  width: 100%;
-  max-width: 560px;
-  background-color: var(--bg-card);
+  width: min(560px, calc(100% - 2rem));
+  max-width: none;
+  max-height: 80vh;
+  margin: 12vh auto auto;
+  padding: 0;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xl);
+  background: var(--bg-card);
+  color: var(--text-primary);
   box-shadow: var(--shadow-lg);
-  overflow: hidden;
-  transform: translateY(-8px) scale(0.98);
-  transition: transform var(--transition-slow);
 
-  .search-overlay.open & {
-    transform: translateY(0) scale(1);
-  }
+  &::backdrop { background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(4px); }
+  &:not([open]) { display: none; }
+}
+
+.search-modal { overflow: hidden; }
+.search-overlay .visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+body:has(.search-overlay[open]) { overflow: hidden; }
+.search-close {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  background: none;
+  border: 0;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+  cursor: pointer;
 }
 
 // Input row
@@ -80,12 +85,13 @@
 
 .search-input {
   flex: 1;
+  min-width: 0;
   border: none;
   background: none;
   font-family: 'DM Sans', sans-serif;
   font-size: 1rem;
   color: var(--text-primary);
-  outline: none;
+  &:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
   &::placeholder {
     color: var(--text-muted);

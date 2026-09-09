@@ -1,6 +1,9 @@
 - date: "31 August 2026"
+  short_headline: '<a href="https://arxiv.org/abs/2608.15851">DESA</a> preprint updated to v2.'
   headline: 'Updated preprint: <a href="https://arxiv.org/abs/2608.15851">Query Expansion Should Be Coordinated: Dense Expands, Sparse Anchors</a>.'
 - date: "16 August 2026"
+  archived: true
   headline: 'New preprint (v1): <a href="https://arxiv.org/abs/2608.15851v1">Query Expansion Should Be Coordinated: Dense Expands, Sparse Anchors</a>.'
 - date: "7 August 2026"
+  short_headline: '<a href="https://arxiv.org/abs/2608.07152">EAHR</a> preprint released.'
   headline: 'New preprint: <a href="https://arxiv.org/abs/2608.07152">Exact Adaptive Hybrid Retrieval Without Fixed Top-L Cutoffs</a>.'

@@ -22,7 +22,8 @@
   }
 
   // First paragraph — slightly larger, editorial lead-in
-  > p:first-of-type {
+  > p:first-of-type,
+  > .desktop-only > p:first-of-type {
     font-size: 1.0625rem;
     line-height: 1.8;
     color: var(--text-primary);
@@ -115,4 +116,80 @@
     font-size: 0.875rem;
     line-height: 1.5;
   }
+}
+
+.mobile-only { display: none; }
+
+@media (max-width: 768px) {
+  .desktop-only { display: none; }
+  .mobile-only { display: block; }
+  .home-grid { gap: var(--space-6); }
+  .home-content > h2 { margin-top: 0; }
+  .home-intro {
+    display: grid;
+    grid-template-columns: 140px minmax(0, 1fr);
+    gap: var(--space-8);
+    align-items: center;
+    padding: var(--space-6) 0 var(--space-8);
+    border-bottom: 1px solid var(--border-color);
+
+    .home-identity { margin: var(--space-3) 0; max-width: none; }
+    .chip-container { margin: var(--space-3) 0; }
+  }
+
+  .home-portrait {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--bg-card);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .home-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-6);
+    font-size: 0.875rem;
+    a { display: inline-flex; align-items: center; gap: var(--space-2); min-height: 32px; }
+  }
+
+  .home-research ol.bibliography {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    > li { min-width: 0; border: 0; }
+  }
+
+  .research-card {
+    height: 100%;
+    padding: var(--space-6);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    background: var(--bg-card);
+    display: flex;
+    flex-direction: column;
+
+    h3 { font-size: 1.25rem; line-height: 1.4; margin: var(--space-4) 0 var(--space-3); }
+    h3 a { color: var(--text-primary); background-image: none; }
+    h3 a:hover { color: var(--accent); }
+  }
+
+  .research-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-3);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    .research-acronym { color: var(--accent); font-weight: 700; letter-spacing: 0.08em; }
+  }
+
+  .research-contribution { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.65; }
+  .research-links { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: auto; padding-top: var(--space-3); }
+
+  @media (max-width: 640px) {
+    .home-intro { grid-template-columns: 1fr; gap: var(--space-4); padding-top: 0; }
+    .home-portrait { width: 96px; height: 96px; }
+  }
+
 }

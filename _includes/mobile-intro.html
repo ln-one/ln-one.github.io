@@ -1,0 +1,22 @@
+<section class="home-intro mobile-only" aria-labelledby="home-name" markdown="0">
+<a href="{{ '/about/' | relative_url }}" class="home-portrait-link" aria-label="About {{ site.name | escape }}">
+<img src="{{ site.photo | prepend: '/images/' | relative_url }}" class="home-portrait" alt="{{ site.name | escape }}" width="140" height="140" fetchpriority="high">
+</a>
+<div>
+<h1 class="home-hero" id="home-name">{{ site.name }}</h1>
+<p class="home-identity">{{ site.title }} at <strong>{{ site.institution }}</strong>.</p>
+<div class="chip-container" role="group" aria-label="Research interests">
+<span class="chip">Information Retrieval</span>
+<span class="chip">Data Mining</span>
+<span class="chip">Artificial Intelligence</span>
+</div>
+<nav class="home-contact" aria-label="Contact and profiles">
+{% if site.email %}<a href="mailto:{{ site.email }}">{% include icon.html name="envelope" %} Email</a>{% endif %}
+{% if site.links.cv and site.links.cv != "" %}<a href="{{ site.links.cv | prepend: '/' | relative_url }}">CV</a>{% endif %}
+{% if site.links.google_scholar and site.links.google_scholar != "" %}<a href="{{ site.links.google_scholar }}">Google Scholar</a>{% endif %}
+{% if site.links.github and site.links.github != "" %}<a href="{{ site.links.github }}">GitHub</a>{% endif %}
+{% if site.links.orcid and site.links.orcid != "" %}<a href="{{ site.links.orcid }}">ORCID</a>{% endif %}
+</nav>
+</div>
+</section>
+

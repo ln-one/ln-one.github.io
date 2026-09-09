@@ -1,0 +1,12 @@
+---
+---
+<article class="research-card" aria-labelledby="research-{{ entry.key }}">
+  <div class="research-meta"><span class="research-acronym">{{ entry.acronym | default: entry.key | escape }}</span><span>Preprint · {{ entry.year }}</span></div>
+  <h3 id="research-{{ entry.key }}"><a href="https://arxiv.org/abs/{{ entry.arxiv }}">{{ entry.title }}</a></h3>
+  {% if entry.summary %}<p class="research-contribution">{{ entry.summary }}</p>{% endif %}
+  <div class="research-links">
+    <a href="https://arxiv.org/pdf/{{ entry.arxiv }}" class="btn-pill btn-pdf" aria-label="{{ entry.acronym }} PDF">PDF</a>
+    <a href="https://arxiv.org/abs/{{ entry.arxiv }}" class="btn-pill btn-arxiv" aria-label="{{ entry.acronym }} on arXiv">arXiv</a>
+    {% if entry.code %}<a href="{{ entry.code }}" class="btn-pill btn-code" aria-label="{{ entry.acronym }} code">Code</a>{% endif %}
+  </div>
+</article>

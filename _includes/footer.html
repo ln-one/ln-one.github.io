@@ -1,4 +1,4 @@
-<footer class="site-footer">
+<footer class="site-footer desktop-only">
   <div class="footer-grid">
     <div>
       <h2 class="footer-heading">About</h2>
@@ -31,5 +31,14 @@
     </div>
   </div>
 </footer>
+
+<footer class="site-footer footer-compact mobile-only">
+  <div class="footer-row">
+    <span>&copy; {{ "now" | date: "%Y" }} {{ site.name | escape }}</span>
+    {% if site.email %}<a href="mailto:{{ site.email }}">Contact</a>{% endif %}
+    <a class="footer-credit" href="https://github.com/sbryngelson/academic-website-template">Academic website template</a>
+  </div>
+</footer>
+
 
 <script src="{{ '/assets/js/site.js' | relative_url }}"></script>

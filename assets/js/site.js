@@ -67,7 +67,9 @@
     var target = document.getElementById(targetId);
     if (!target) return;
 
-    target.classList.toggle('show');
+    var expanded = button.getAttribute('aria-expanded') !== 'true';
+    button.setAttribute('aria-expanded', String(expanded));
+    target.hidden = !expanded;
   });
 
   // ----- Publication Search/Filter -----
@@ -188,96 +190,130 @@
   var searchOverlay = document.getElementById('searchOverlay');
   var searchInputEl = document.getElementById('searchInput');
   var searchResultsEl = document.getElementById('searchResults');
+  var searchStatus = document.getElementById('searchStatus');
+  var searchCloseBtn = document.getElementById('searchClose');
   var searchData = null;
+  var searchOpener = null;
+  var debounceTimer;
+  var searchVersion = 0;
 
   function openSearch() {
-    if (!searchOverlay) return;
-    searchOverlay.classList.add('open');
-    setTimeout(function () { searchInputEl.focus(); }, 100);
+    if (!searchOverlay || searchOverlay.open) return;
+    searchOpener = document.activeElement;
+    searchOverlay.showModal();
+    searchInputEl.focus();
   }
 
   function closeSearch() {
-    if (!searchOverlay) return;
-    searchOverlay.classList.remove('open');
-    searchInputEl.value = '';
-    searchResultsEl.innerHTML = '';
+    if (searchOverlay && searchOverlay.open) searchOverlay.close();
   }
 
-  if (searchToggleBtn) {
-    searchToggleBtn.addEventListener('click', openSearch);
-  }
+  if (searchToggleBtn) searchToggleBtn.addEventListener('click', openSearch);
+  if (searchCloseBtn) searchCloseBtn.addEventListener('click', closeSearch);
 
   if (searchOverlay) {
+    searchOverlay.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeSearch();
+        return;
+      }
+      if (e.key !== 'Tab') return;
+      var controls = searchOverlay.querySelectorAll('input, button, a[href]');
+      var first = controls[0];
+      var last = controls[controls.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
+    // Reset pending work and restore the opener on every close path.
+    searchOverlay.addEventListener('close', function () {
+      clearTimeout(debounceTimer);
+      searchVersion++;
+      searchInputEl.value = '';
+      searchResultsEl.replaceChildren();
+      searchStatus.textContent = '';
+      if (searchOpener && searchOpener.isConnected) searchOpener.focus();
+    });
     searchOverlay.addEventListener('click', function (e) {
-      if (e.target === searchOverlay) closeSearch();
+      var bounds = searchOverlay.getBoundingClientRect();
+      if (e.target === searchOverlay &&
+          (e.clientX < bounds.left || e.clientX > bounds.right ||
+           e.clientY < bounds.top || e.clientY > bounds.bottom)) closeSearch();
     });
   }
 
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && searchOverlay && searchOverlay.classList.contains('open')) {
-      closeSearch();
-    }
-    // Cmd/Ctrl + K to open search
-    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k' && searchOverlay) {
       e.preventDefault();
-      if (searchOverlay && searchOverlay.classList.contains('open')) {
-        closeSearch();
-      } else {
-        openSearch();
-      }
+      if (searchOverlay.open) closeSearch();
+      else openSearch();
     }
   });
 
-  // Site may be served from a sub-path (e.g. user.github.io/repo); the layout
-  // stores site.baseurl on <body> so the index can be fetched from the right place.
   var baseurl = (document.body && document.body.getAttribute('data-baseurl')) || '';
 
-  function loadSearchData(callback) {
-    if (searchData) { callback(searchData); return; }
-    fetch(baseurl + '/assets/search.json')
-      .then(function (r) { return r.json(); })
-      .then(function (data) {
-        searchData = data;
-        callback(data);
-      })
-      .catch(function () {
-        searchResultsEl.innerHTML = '<div class="search-no-results">Could not load search index.</div>';
-      });
+  function showSearchMessage(message) {
+    var notice = document.createElement('div');
+    notice.className = 'search-no-results';
+    notice.textContent = message;
+    searchResultsEl.replaceChildren(notice);
+    searchStatus.textContent = message;
   }
 
   function renderResults(query, data) {
-    if (!query) {
-      searchResultsEl.innerHTML = '';
-      return;
-    }
     var q = query.toLowerCase();
     var matches = data.filter(function (item) {
-      return item.title.toLowerCase().includes(q) ||
-             item.content.toLowerCase().includes(q);
+      return item.title.toLowerCase().includes(q) || item.content.toLowerCase().includes(q);
     });
-
     if (matches.length === 0) {
-      searchResultsEl.innerHTML = '<div class="search-no-results">No results for "' + query + '"</div>';
+      showSearchMessage('No results for "' + query + '"');
       return;
     }
 
-    searchResultsEl.innerHTML = matches.map(function (item) {
-      var snippet = item.content.substring(0, 150).trim() + '...';
-      return '<a href="' + item.url + '" class="search-result-item">' +
-        '<div class="search-result-title">' + item.title + '</div>' +
-        '<div class="search-result-snippet">' + snippet + '</div>' +
-        '</a>';
-    }).join('');
+    var results = document.createDocumentFragment();
+    matches.forEach(function (item) {
+      var link = document.createElement('a');
+      link.className = 'search-result-item';
+      link.href = item.url;
+      var title = document.createElement('div');
+      title.className = 'search-result-title';
+      title.textContent = item.title;
+      var snippet = document.createElement('div');
+      snippet.className = 'search-result-snippet';
+      snippet.textContent = item.content.substring(0, 150).trim() + '...';
+      link.append(title, snippet);
+      results.appendChild(link);
+    });
+    searchResultsEl.replaceChildren(results);
+    searchStatus.textContent = matches.length + (matches.length === 1 ? ' result' : ' results');
   }
 
   if (searchInputEl) {
-    var debounceTimer;
     searchInputEl.addEventListener('input', function () {
       var query = this.value.trim();
+      var version = ++searchVersion;
       clearTimeout(debounceTimer);
+      searchResultsEl.replaceChildren();
+      searchStatus.textContent = '';
+      if (!query) return;
       debounceTimer = setTimeout(function () {
-        loadSearchData(function (data) {
-          renderResults(query, data);
+        var request = searchData ? Promise.resolve(searchData) :
+          fetch(baseurl + '/assets/search.json').then(function (response) {
+            if (!response.ok) throw new Error('Search index unavailable');
+            return response.json();
+          });
+        request.then(function (data) {
+          searchData = data;
+          if (version === searchVersion && searchOverlay.open) renderResults(query, data);
+        }).catch(function () {
+          if (version === searchVersion && searchOverlay.open) {
+            showSearchMessage('Could not load search index. Please try again.');
+          }
         });
       }, 150);
     });
