@@ -23,8 +23,9 @@
           {% include icon.html name="search" %}
         </button>
         {% unless site.dark_mode == false %}
-        <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+        <button type="button" class="dark-mode-toggle" id="darkModeToggle" aria-label="Theme: Auto (system). Switch to Light">
           {% include icon.html name="sun" id="themeIcon" %}
+          <span id="themeLabel">Auto</span>
         </button>
         {% endunless %}
       </div>

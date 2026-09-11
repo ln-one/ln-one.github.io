@@ -39,21 +39,36 @@
   var toggle = document.getElementById('darkModeToggle');
   var icon = document.getElementById('themeIcon');
 
-  function updateIcon() {
-    if (!icon) return;
-    var theme = document.documentElement.getAttribute('data-bs-theme');
-    setIcon(icon, theme === 'dark' ? 'moon' : 'sun');
-  }
-
   if (toggle) {
-    updateIcon();
+    var systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+    var modes = ['auto', 'light', 'dark'];
+    var labels = { auto: 'Auto', light: 'Light', dark: 'Dark' };
+    var mode = 'auto';
+    try {
+      var savedTheme = localStorage.getItem('theme');
+      if (modes.includes(savedTheme)) mode = savedTheme;
+    } catch (error) {}
+
+    function applyTheme() {
+      var theme = mode === 'auto' ? (systemTheme.matches ? 'dark' : 'light') : mode;
+      var next = modes[(modes.indexOf(mode) + 1) % modes.length];
+      document.documentElement.setAttribute('data-bs-theme', theme);
+      setIcon(icon, theme === 'dark' ? 'moon' : 'sun');
+      document.getElementById('themeLabel').textContent = labels[mode];
+      var description = 'Theme: ' + labels[mode] + (mode === 'auto' ? ' (system)' : '') + '. Switch to ' + labels[next];
+      toggle.setAttribute('aria-label', description);
+      toggle.title = description;
+    }
+
+    applyTheme();
+    systemTheme.addEventListener('change', function () {
+      if (mode === 'auto') applyTheme();
+    });
 
     toggle.addEventListener('click', function () {
-      var current = document.documentElement.getAttribute('data-bs-theme');
-      var next = current === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-bs-theme', next);
-      localStorage.setItem('theme', next);
-      updateIcon();
+      mode = modes[(modes.indexOf(mode) + 1) % modes.length];
+      try { localStorage.setItem('theme', mode); } catch (error) {}
+      applyTheme();
     });
   }
 
