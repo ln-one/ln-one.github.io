@@ -29,7 +29,3 @@ Undergraduate at **Southwest Jiaotong University**.
 {% bibliography --query @*[selected=true] --template research-card %}
 <p class="all-publications"><a href="{{ '/publications/' | relative_url }}">All publications &rarr;</a></p>
 </div>
-
-## Practice
-
-[Workflow, figures, and standards]({{ '/practice/' | relative_url }}).
