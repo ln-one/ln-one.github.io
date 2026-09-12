@@ -28,6 +28,12 @@ for route in ('practice', 'practice/workflow', 'practice/figures', 'practice/sta
     page = root / route / 'index.html'
     assert page.is_file(), f'Missing {route}'
     assert '[[' not in page.read_text(), f'Unresolved wiki link in {route}'
+practice = (root / 'practice/index.html').read_text()
+for heading in ('workflow', 'figures', 'standards'):
+    assert f'<h2 id="{heading}">' in practice
+    assert f'href="#{heading}"' in practice
+for heading in ('tools', 'colors', 'appearance'):
+    assert f'<h3 id="{heading}">' in practice
 for private in ('AGENTS.md', 'MIGRATION.md', 'CONTENT_SOURCES.md', 'package.json', 'scripts', '_practice'):
     if (root/private).exists(): errors.append(f'Build exposes {private}')
 # Search results must lead to real pages and publication anchors.

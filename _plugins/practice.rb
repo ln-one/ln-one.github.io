@@ -2,17 +2,21 @@
 module Jekyll
   class PracticeGenerator < Generator
     def generate(site)
+      page = site.pages.find { |item| item.data['permalink'] == '/practice/' }
       %w[Workflow Figures Standards].each do |title|
-        page = PageWithoutAFile.new(site, site.source, "practice/#{title.downcase}", 'index.md')
-        page.data = { 'layout' => 'practice', 'title' => title }
         body = File.read(File.join(site.source, '_practice', "#{title}.md"))
         body = body.gsub(/\[\[(Workflow|Figures|Standards)\]\]/) do
-          "[#{$1}](#{site.baseurl}/practice/#{$1.downcase}/)"
+          "[#{$1}](#{site.baseurl}/practice/##{$1.downcase})"
         end
         body = body.gsub('](assets/', "](#{site.baseurl}/practice/assets/")
         body = body.sub(/(!\[Aizen — BLEACH\]\([^\n]+\))/, '\1{: width="1826" height="2048" loading="lazy"}')
-        page.content = "# #{title}\n\n#{body}"
-        site.pages << page
+        body = body.gsub(/^(\#{1,5}) /, '\\1# ')
+        page.content += "\n\n## #{title}\n\n#{body}"
+        redirect = PageWithoutAFile.new(site, site.source, "practice/#{title.downcase}", 'index.html')
+        redirect.data = { 'layout' => nil, 'search' => false, 'sitemap' => false }
+        target = "#{site.baseurl}/practice/##{title.downcase}"
+        redirect.content = %(<html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=#{target}"><link rel="canonical" href="#{site.config['url']}#{target}"><title>Practice</title></head><body><a href="#{target}">Continue to #{title}</a></body></html>)
+        site.pages << redirect
       end
       Dir.glob(File.join(site.source, '_practice/assets/*')).each do |asset|
         file = StaticFile.new(site, site.source, '_practice/assets', File.basename(asset))

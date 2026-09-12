@@ -1,13 +1,12 @@
 ---
 layout: default
 ---
-<article class="practice-page">
-  <nav class="practice-nav" aria-label="Practice sections">
-    {% assign sections = 'Workflow,Figures,Standards' | split: ',' %}
-    {% for section in sections %}
-      {% assign section_url = section | downcase | prepend: '/practice/' | append: '/' %}
-      <a href="{{ section_url | relative_url }}"{% if page.title == section %} aria-current="page"{% endif %}>{{ section }}</a>
-    {% endfor %}
+<div class="practice-page">
+  <nav class="practice-nav" aria-label="On this page">
+    <span class="practice-nav-label">On this page</span>
+    <a href="#workflow">Workflow</a>
+    <a href="#figures">Figures</a>
+    <a href="#standards">Standards</a>
   </nav>
-  {{ content }}
-</article>
+  <article class="practice-content">{{ content }}</article>
+</div>

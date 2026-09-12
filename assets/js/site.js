@@ -383,4 +383,23 @@
     });
   }
 
+  // Native anchors preserve deep links and browser history; scrolling only updates the indicator.
+  var practiceLinks = Array.from(document.querySelectorAll('.practice-nav a'));
+  if (practiceLinks.length) {
+    var practiceSections = practiceLinks.map(function (link) { return document.querySelector(link.getAttribute('href')); });
+    var updatePracticeLocation = function () {
+      var current = 0;
+      practiceSections.forEach(function (section, index) {
+        if (section && section.getBoundingClientRect().top <= 120) current = index;
+      });
+      practiceLinks.forEach(function (link, index) {
+        if (index === current) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    };
+    window.addEventListener('scroll', updatePracticeLocation, { passive: true });
+    window.addEventListener('resize', updatePracticeLocation);
+    updatePracticeLocation();
+  }
+
 })();
