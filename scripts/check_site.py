@@ -24,7 +24,11 @@ for route in ('index.html', 'publications/index.html'):
     html = (root / route).read_text()
     for identifier in ('2608.15851', '2608.07152'):
         if f'https://arxiv.org/abs/{identifier}' not in html: errors.append(f'{route}: missing {identifier}')
-for private in ('AGENTS.md', 'MIGRATION.md', 'CONTENT_SOURCES.md', 'package.json', 'scripts'):
+for route in ('guide', 'guide/workflow', 'guide/figures', 'guide/standards'):
+    page = root / route / 'index.html'
+    assert page.is_file(), f'Missing {route}'
+    assert '[[' not in page.read_text(), f'Unresolved wiki link in {route}'
+for private in ('AGENTS.md', 'MIGRATION.md', 'CONTENT_SOURCES.md', 'package.json', 'scripts', '_guide'):
     if (root/private).exists(): errors.append(f'Build exposes {private}')
 # Search results must lead to real pages and publication anchors.
 search_records = json.loads((root / 'assets/search.json').read_text())

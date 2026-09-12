@@ -155,3 +155,10 @@ Both workflows rasterize favicon assets during their builds.
 A push to `main` triggers publication; do not push solely to preview a local edit.
 Keep internal documentation and tooling excluded in `_config.yml`, including
 `AGENTS.md`, `MIGRATION.md`, `CONTENT_SOURCES.md`, `package.json`, and `scripts/`.
+
+## Guide
+
+Edit `_guide/` Markdown; Jekyll renders it under `/guide/`. Before edits, run
+`python3 /Users/ln1/Projects/writing-sync-pilot/sync.py guide --check`; sync if different.
+Sync once after edits. Preserve conflicts; never force. Work directly on `main`.
+Publishing still requires a user request.

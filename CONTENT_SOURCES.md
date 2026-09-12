@@ -13,3 +13,7 @@ Verified 2026-09-09.
 - Research interests corrected directly by the owner: information retrieval, data mining, and artificial intelligence.
 
 - ResearchGate profile URL supplied by the owner: https://www.researchgate.net/profile/Chunran-Zhang. No profile metrics or additional credentials inferred.
+
+## Guide
+
+`_guide/` contains the owner-authored Workflow, Figures, and Standards notes, synchronized with Obsidian. The BLEACH panel is an owner-provided illustration, not original site artwork or covered by the site code license.
