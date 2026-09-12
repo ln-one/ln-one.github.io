@@ -22,7 +22,7 @@
   <link rel="preload" href="{{ '/assets/fonts/dm-sans-latin-normal-wght.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
   <meta name="theme-color" content="{{ site.accent_color | default: '#1a7a6d' }}">
   <link rel="canonical" href="{{ page.url | replace: 'index.html', '' | absolute_url }}">
   <!-- Personal logo; raster fallbacks are generated for browser compatibility. -->
