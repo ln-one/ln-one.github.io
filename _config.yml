@@ -49,7 +49,7 @@ analytics:
 nav_pages:
   - name: about
   - name: publications
-  - name: guide
+  - name: practice
 
 # ============================================================
 # STEP 5: Publications (assets/ref.bib)

@@ -30,6 +30,6 @@ Undergraduate at **Southwest Jiaotong University**.
 <p class="all-publications"><a href="{{ '/publications/' | relative_url }}">All publications &rarr;</a></p>
 </div>
 
-## Guide
+## Practice
 
-[Workflow, figures, and standards]({{ '/guide/' | relative_url }}).
+[Workflow, figures, and standards]({{ '/practice/' | relative_url }}).
