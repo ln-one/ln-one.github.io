@@ -29,6 +29,10 @@ for route in ('practice', 'practice/workflow', 'practice/figures', 'practice/sta
     assert page.is_file(), f'Missing {route}'
     assert '[[' not in page.read_text(), f'Unresolved wiki link in {route}'
 practice = (root / 'practice/index.html').read_text()
+private_remark = 'Doing this knowingly is academic misconduct; doing it unknowingly is stupidity, not an excuse.'
+assert private_remark in Path("_practice/Standards.md").read_text()
+for public_file in (root / "practice/index.html", root / "assets/search.json"):
+    assert private_remark not in public_file.read_text(), f"Personal remark exposed in {public_file}"
 for heading in ('workflow', 'figures', 'standards'):
     assert f'<h2 id="{heading}">' in practice
     assert f'href="#{heading}"' in practice

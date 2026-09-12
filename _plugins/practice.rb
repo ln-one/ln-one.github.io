@@ -5,6 +5,8 @@ module Jekyll
       page = site.pages.find { |item| item.data['permalink'] == '/practice/' }
       %w[Workflow Figures Standards].each do |title|
         body = File.read(File.join(site.source, '_practice', "#{title}.md"))
+        # Keep this personal remark in the source, but omit it from the public site.
+        body = body.sub(" Doing this knowingly is academic misconduct; doing it unknowingly is stupidity, not an excuse.", "") if title == "Standards"
         body = body.gsub(/\[\[(Workflow|Figures|Standards)\]\]/) do
           "[#{$1}](#{site.baseurl}/practice/##{$1.downcase})"
         end
