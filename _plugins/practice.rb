@@ -4,14 +4,14 @@ module Jekyll
     def generate(site)
       %w[Workflow Figures Standards].each do |title|
         page = PageWithoutAFile.new(site, site.source, "practice/#{title.downcase}", 'index.md')
-        page.data = { 'layout' => 'page', 'title' => title }
+        page.data = { 'layout' => 'practice', 'title' => title }
         body = File.read(File.join(site.source, '_practice', "#{title}.md"))
         body = body.gsub(/\[\[(Workflow|Figures|Standards)\]\]/) do
           "[#{$1}](#{site.baseurl}/practice/#{$1.downcase}/)"
         end
         body = body.gsub('](assets/', "](#{site.baseurl}/practice/assets/")
         body = body.sub(/(!\[Aizen — BLEACH\]\([^\n]+\))/, '\1{: width="1826" height="2048" loading="lazy"}')
-        page.content = "[Practice](#{site.baseurl}/practice/)\n\n# #{title}\n\n#{body}"
+        page.content = "# #{title}\n\n#{body}"
         site.pages << page
       end
       Dir.glob(File.join(site.source, '_practice/assets/*')).each do |asset|

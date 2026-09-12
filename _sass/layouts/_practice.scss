@@ -1,0 +1,23 @@
+.practice-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+  a { text-decoration: none; }
+  a[aria-current="page"] {
+    color: var(--text-primary);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.4em;
+  }
+}
+.practice-page {
+  h1 { font-size: 2.25rem; margin-top: 1.75rem; }
+  h2 {
+    font-size: 1.375rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    &::after { display: none; }
+  }
+}
