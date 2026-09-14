@@ -7,5 +7,3 @@ Personal standards for research and writing.
 5. Minimize additional hyperparameters. Reject adding or replacing components to expand the tuning space, repeatedly using test results to redesign the method or select configurations, and presenting the selected gains as evidence that the method works. Doing this knowingly is academic misconduct; doing it unknowingly is stupidity, not an excuse.
 6. Write clearly and concisely. Avoid titles such as: “An Intelligent Electrical Load Forecasting System Based on Deep Learning and a Transformer with Multi-Head Self-Attention” (a Transformer-based electrical load forecasting system).
 7. Avoid self-praise and empty claims such as “significantly better,” “the first,” or “state of the art.”
-
-![Aizen — BLEACH](assets/aizen-strong-words.png)
