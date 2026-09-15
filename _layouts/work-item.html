@@ -3,7 +3,14 @@
 <article class="work-item">
   <a class="work-link" href="{{ '/publications/' | relative_url }}#pub-{{ entry.key }}" aria-labelledby="work-{{ entry.key }}">
     <h3 id="work-{{ entry.key }}">{{ entry.title | escape }}</h3>
-    {% if entry.summary %}<p>{{ entry.summary | escape }}</p>{% endif %}
     <span class="work-arrow" aria-hidden="true">&rarr;</span>
+  <p class="work-authors">
+    {% assign authors = entry.author | split: ' and ' %}
+    {% for author in authors %}
+      {% assign parts = author | split: ', ' %}
+      <span class="work-author">{% if parts.size == 2 %}{{ parts[1] | escape }} {{ parts[0] | escape }}{% else %}{{ author | escape }}{% endif %}</span>{% unless forloop.last %}, {% endunless %}
+    {% endfor %}
+    <span class="work-year">· {{ entry.year }}</span>
+  </p>
   </a>
 </article>

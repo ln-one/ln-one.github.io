@@ -226,6 +226,9 @@
     margin: 0 0 var(--space-1);
     color: var(--text-secondary);
   }
+  .work-authors { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1); }
+  .work-author { display: inline-flex; align-items: center; gap: var(--space-1); }
+  .work-year { color: var(--text-muted); }
   .all-publications { margin: var(--space-2) 0 0; font-size: 0.875rem; }
 
   @media (max-width: 768px) {
@@ -239,3 +242,12 @@
   outline: 2px solid var(--accent);
   outline-offset: 8px;
 }
+
+.pub-authors {
+  margin: var(--space-2) 0;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+.pub-author { display: inline-flex; align-items: center; gap: var(--space-1); }
+.author-orcid { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; min-height: 24px; color: var(--accent); background-image: none; }
+.author-orcid .icon { width: 14px; height: 14px; }

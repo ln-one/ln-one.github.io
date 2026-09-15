@@ -2,25 +2,6 @@
 ---
 
 {% comment %}
-  Bold the site owner's name. Uses scholar.last_name / scholar.first_name
-  from _config.yml; the first matching form wins.
-{% endcomment %}
-{% assign ref = reference %}
-{% if site.scholar.last_name and site.scholar.first_name %}
-  {% assign bolded = false %}
-  {% for first in site.scholar.first_name %}
-    {% unless bolded %}
-      {% capture me %}{{ site.scholar.last_name }}, {{ first }}{% endcapture %}
-      {% if ref contains me %}
-        {% capture me_bold %}<b>{{ me }}</b>{% endcapture %}
-        {% assign ref = ref | replace: me, me_bold %}
-        {% assign bolded = true %}
-      {% endif %}
-    {% endunless %}
-  {% endfor %}
-{% endif %}
-
-{% comment %}
   Links come from BibTeX fields:
     file     PDF in papers/          arxiv   arXiv identifier
     doi      DOI                     url     any web page
@@ -41,10 +22,23 @@
 <div class="pub-entry" id="pub-{{ entry.key }}" tabindex="-1" data-pub-searchable
   data-search-title="{{ entry.acronym | escape }}{% if entry.acronym %} — {% endif %}{{ entry.title | escape }}"
   data-search-content="{{ entry.summary | escape }} {{ entry.author | escape }} {{ entry.year | escape }} {{ entry.arxiv | escape }}">
-  {% if entry.year %}<span class="year-badge">{{ entry.year }}</span>{% endif %}
-  <div class="text-justify">{{ ref }}</div>
+  {% assign venue_label = entry.booktitle | default: entry.journal | default: entry.note %}
+  {% if entry.note contains 'preprint' %}{% assign venue_label = 'Preprint' %}{% endif %}
+  <div class="pub-heading">
+    <h3 class="pub-title">{{ entry.title | escape }}</h3>
+    <div class="pub-badges">
+      {% if entry.year %}<span class="pub-badge pub-badge-year">{{ entry.year }}</span>{% endif %}
+      {% if venue_label %}<span class="pub-badge pub-badge-{{ venue_label | slugify }}">{{ venue_label | escape }}</span>{% endif %}
+    </div>
+  </div>
 
-  {% if entry.summary %}<p class="pub-summary">{{ entry.summary }}</p>{% endif %}
+  <p class="pub-authors">
+    {% assign authors = entry.author | split: ' and ' %}
+    {% for author in authors %}
+      {% assign parts = author | split: ', ' %}
+      <span class="pub-author">{% if parts.size == 2 %}{{ parts[1] | escape }} {{ parts[0] | escape }}{% else %}{{ author | escape }}{% endif %}{% if author == 'Zhang, Chunran' and site.links.orcid %}<a class="author-orcid" href="{{ site.links.orcid }}" aria-label="Chunran Zhang on ORCID">{% include icon.html name="orcid" %}</a>{% endif %}</span>{% unless forloop.last %}, {% endunless %}
+    {% endfor %}
+  </p>
   <div class="pub-actions">
     {% if has_pdf %}<a href="{{ entry.file | prepend: '/papers/' | relative_url }}" target="_blank" class="btn-pill btn-pdf">PDF</a>{% endif %}
     {% if arxiv_id and arxiv_id != "" %}<a href="https://arxiv.org/pdf/{{ arxiv_id }}" target="_blank" class="btn-pill btn-pdf">PDF</a><a href="https://arxiv.org/abs/{{ arxiv_id }}" target="_blank" class="btn-pill btn-arxiv">arXiv</a>{% endif %}

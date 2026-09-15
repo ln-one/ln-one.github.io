@@ -57,6 +57,8 @@ ol.bibliography {
   list-style: none;
   padding-left: 0;
   margin-bottom: 0;
+  max-width: none;
+  > li { max-width: none; }
 }
 
 // Collapsible bibtex/abstract
@@ -175,4 +177,43 @@ ol.bibliography > li + li {
   }
   .copy-label { display: inline; }
   .copy-wrapper pre { padding-right: var(--space-4); }
+}
+
+#pubList {
+  .pub-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.5;
+    margin: 0 0 var(--space-2);
+    max-width: none;
+  }
+  .pub-authors, .pub-venue { max-width: none; margin: var(--space-1) 0; }
+  .pub-venue { font-style: normal; }
+  .pub-entry { padding: var(--space-4) 0; }
+}
+
+.pub-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+  .pub-title { flex: 1 1 28rem; }
+}
+.pub-badges { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.pub-badge {
+  display: inline-block;
+  padding: 0.15rem 0.65rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+}
+.pub-badge-preprint {
+  color: #fff;
+  background: #b31b1b;
+  border-color: #b31b1b;
 }
