@@ -22,7 +22,7 @@ for file in root.rglob('*.html'):
         if demo in text: errors.append(f'{file}: demo content {demo}')
 for route in ('index.html', 'publications/index.html'):
     html = (root / route).read_text()
-    for identifier in ('2608.15851', '2608.07152'):
+    for identifier in ('2609.15143', '2609.14971', '2608.15851', '2608.07152'):
         if f'https://arxiv.org/abs/{identifier}' not in html: errors.append(f'{route}: missing {identifier}')
 for route in ('practice', 'practice/workflow', 'practice/figures', 'practice/standards'):
     page = root / route / 'index.html'
@@ -43,7 +43,7 @@ for private in ('AGENTS.md', 'MIGRATION.md', 'CONTENT_SOURCES.md', 'package.json
 # Search results must lead to real pages and publication anchors.
 search_records = json.loads((root / 'assets/search.json').read_text())
 publication_records = [item for item in search_records if item.get('kind') == 'publication']
-if len(publication_records) < 2:
+if len(publication_records) < 4:
     errors.append('Search index is missing publication records')
 class Anchors(HTMLParser):
     def __init__(self):
@@ -62,4 +62,4 @@ for item in search_records:
         if unquote(url.fragment) not in parser.ids:
             errors.append(f"Search index: missing anchor {item['url']}")
 if errors: raise SystemExit('\n'.join(errors))
-print('Passed: internal links/assets, both preprints, demo removal, source-file exclusions, and search destinations.')
+print('Passed: internal links/assets, all four preprints, demo removal, source-file exclusions, and search destinations.')
