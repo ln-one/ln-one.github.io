@@ -184,3 +184,58 @@
 
 
 }
+
+// Compact selected work, shared by desktop and mobile.
+.selected-work {
+  padding: var(--space-4) var(--space-6);
+
+  ol.bibliography { margin: 0; padding: 0; list-style: none; }
+  ol.bibliography > li {
+    margin: 0;
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+  ol.bibliography > li:first-child { padding-top: 0; }
+  ol.bibliography > li:last-child { border-bottom: 0; }
+  .work-item h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.45;
+    font-weight: 600;
+    margin: 0 0 var(--space-2);
+  }
+  .work-link {
+    display: block;
+    position: relative;
+    padding: var(--space-2) var(--space-6) var(--space-2) var(--space-2);
+    margin: calc(-1 * var(--space-2));
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    background-image: none;
+    text-decoration: none;
+    transition: background-color 150ms ease;
+  }
+  .work-link:hover, .work-link:focus-visible { background-color: var(--bg-secondary); }
+  .work-link:hover h3, .work-link:focus-visible h3 { color: var(--accent); }
+  .work-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .work-arrow { position: absolute; right: var(--space-1); top: var(--space-2); color: var(--accent); }
+
+  .work-item p {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0 0 var(--space-1);
+    color: var(--text-secondary);
+  }
+  .all-publications { margin: var(--space-2) 0 0; font-size: 0.875rem; }
+
+  @media (max-width: 768px) {
+    padding: var(--space-4);
+  }
+}
+
+// Identify the selected publication after following a homepage link.
+.pub-entry:target {
+  scroll-margin-top: 100px;
+  outline: 2px solid var(--accent);
+  outline-offset: 8px;
+}

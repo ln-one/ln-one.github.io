@@ -20,10 +20,14 @@ for file in root.rglob('*.html'):
     text = file.read_text(); parser.feed(text)
     for demo in ('Richard Feynman', 'Nobel Prize', 'California Institute of Technology'):
         if demo in text: errors.append(f'{file}: demo content {demo}')
-for route in ('index.html', 'publications/index.html'):
-    html = (root / route).read_text()
-    for identifier in ('2609.15143', '2609.14971', '2608.15851', '2608.07152'):
-        if f'https://arxiv.org/abs/{identifier}' not in html: errors.append(f'{route}: missing {identifier}')
+for key, identifier in (('dibud', '2609.15143'), ('opacity', '2609.14971'), ('desa', '2608.15851'), ('eahr', '2608.07152')):
+    home = (root / 'index.html').read_text()
+    publications = (root / 'publications/index.html').read_text()
+    anchor = f'pub-zhang2026{key}'
+    if f'/publications/#{anchor}' not in home:
+        errors.append(f'Homepage: missing work link {anchor}')
+    if f'id="{anchor}"' not in publications or f'https://arxiv.org/abs/{identifier}' not in publications:
+        errors.append(f'Publications: missing {identifier} or its anchor')
 for route in ('practice', 'practice/workflow', 'practice/figures', 'practice/standards'):
     page = root / route / 'index.html'
     assert page.is_file(), f'Missing {route}'

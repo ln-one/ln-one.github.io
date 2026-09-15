@@ -1,0 +1,9 @@
+---
+---
+<article class="work-item">
+  <a class="work-link" href="{{ '/publications/' | relative_url }}#pub-{{ entry.key }}" aria-labelledby="work-{{ entry.key }}">
+    <h3 id="work-{{ entry.key }}">{{ entry.title | escape }}</h3>
+    {% if entry.summary %}<p>{{ entry.summary | escape }}</p>{% endif %}
+    <span class="work-arrow" aria-hidden="true">&rarr;</span>
+  </a>
+</article>

@@ -18,14 +18,9 @@ Undergraduate at **Southwest Jiaotong University**.
 
 </div>
 
-## Selected preprints
+## Selected work
 
-<div class="section-card selected-pubs desktop-only" markdown="0">
-{% bibliography --query @*[selected=true] %}
-<p style="margin: var(--space-4) 0 0;"><a href="{{ '/publications/' | relative_url }}">All publications &rarr;</a></p>
-</div>
-
-<div class="home-research mobile-only" markdown="0">
-{% bibliography --query @*[selected=true] --template research-card %}
+<div class="section-card selected-work" markdown="0">
+{% bibliography --query @*[selected=true] --template work-item %}
 <p class="all-publications"><a href="{{ '/publications/' | relative_url }}">All publications &rarr;</a></p>
 </div>
