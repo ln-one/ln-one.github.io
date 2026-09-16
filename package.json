@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "npm run cv && sh scripts/jekyll.sh serve --host 127.0.0.1 --port 4321",
     "build": "npm run cv && sh scripts/jekyll.sh build --strict_front_matter",
-    "check": "python3 scripts/check_site.py",
+    "check": "python3 scripts/check_site.py && python3 scripts/check_machine_readable.py",
     "cv": "sh scripts/build-cv.sh"
   }
 }

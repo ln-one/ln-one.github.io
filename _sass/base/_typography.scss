@@ -97,3 +97,9 @@ hr {
   border-top: 1px solid var(--border-color);
   margin: var(--space-8) 0;
 }
+
+.biography {
+  margin-bottom: var(--space-4);
+  p { margin-bottom: var(--space-2); }
+  p:last-child { margin-bottom: 0; }
+}

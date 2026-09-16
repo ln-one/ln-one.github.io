@@ -1,4 +1,4 @@
-{% capture display_title %}{% if page.url == '/' %}{{ site.name }}{% elsif page.title %}{{ page.title }} — {{ site.name }}{% else %}{{ site.name }}{% endif %}{% endcapture %}
+{% capture display_title %}{% if page.title %}{{ page.title }} — {{ site.name }}{% else %}{{ site.name }}{% endif %}{% endcapture %}
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -59,24 +59,17 @@
 
   {% if page.math or site.math %}{% include mathjax.html %}{% endif %}
 
-  <!-- JSON-LD Structured Data -->
+  <!-- Public identity; complete scholarly records on the publications page. -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "{% if page.url == '/' %}WebSite{% else %}WebPage{% endif %}",
-    "name": {{ display_title | strip | jsonify }},
-    "url": "{{ page.url | absolute_url }}",
-    "description": "{{ site.description | escape }}",
-    "author": {
-      "@type": "Person",
-      "name": "{{ site.name | escape }}",
-      "jobTitle": "{{ site.title | escape }}",
-      "affiliation": {
-        "@type": "Organization",
-        "name": "{{ site.institution | escape }}"
-      }{% if site.links.google_scholar and site.links.google_scholar != "" %},
-      "sameAs": ["{{ site.links.google_scholar }}"{% if site.links.github and site.links.github != "" %}, "{{ site.links.github }}"{% endif %}{% if site.links.orcid and site.links.orcid != "" %}, "{{ site.links.orcid }}"{% endif %}]{% endif %}
-    }
-  }
+  {"@context":"https://schema.org","@graph":[
+    {{ site.data.machine_person | jsonify | replace: '<', '\u003c' }},
+    {"@type":"{% if page.url == '/' %}WebSite{% else %}WebPage{% endif %}",
+     "name":{{ display_title | strip | jsonify }},
+     "url":{{ page.url | absolute_url | jsonify }},
+     "description":{{ site.description | jsonify }},
+     "author":{"@id":{{ '/#person' | absolute_url | jsonify }}}}
+    {% if page.url == '/publications/' %}{% for article in site.data.machine_articles %},{{ article | jsonify | replace: '<', '\u003c' }}{% endfor %}{% endif %}
+  ]}
   </script>
+  <link rel="alternate" type="text/markdown" title="Complete profile and research works" href="{{ '/profile.md' | relative_url }}">
 </head>

@@ -42,7 +42,16 @@
   }
   a:hover { color: var(--accent); }
 
+  .footer-copyright a {
+    display: inline-flex;
+    background-image: linear-gradient(var(--accent), var(--accent)) !important;
+  }
+
   .footer-copyright {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: var(--space-6);
     max-width: none;
     margin: var(--space-6) 0 0;
     padding-top: var(--space-4);
@@ -52,5 +61,6 @@
 
   @media (max-width: 480px) {
     .footer-links { grid-template-columns: 1fr; }
+    .footer-copyright { grid-template-columns: 1fr; gap: var(--space-1); }
   }
 }

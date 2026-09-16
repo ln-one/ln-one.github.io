@@ -13,7 +13,7 @@
         {% if site.links.orcid and site.links.orcid != "" %}<a href="{{ site.links.orcid }}">{% include icon.html name="orcid" %} ORCID</a>{% endif %}
       </nav>
     </div>
-    <p class="footer-copyright">&copy; {{ "now" | date: "%Y" }} {{ site.name | escape }}</p>
+    <div class="footer-copyright"><span>&copy; {{ "now" | date: "%Y" }} {{ site.name | escape }}</span><a href="{{ '/profile.md' | relative_url }}" type="text/markdown">Markdown</a></div>
   </div>
 </footer>
 

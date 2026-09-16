@@ -3,7 +3,7 @@
 <img src="{{ site.photo | prepend: '/images/' | relative_url }}" class="home-portrait" alt="{{ site.name | escape }}" width="140" height="140" fetchpriority="high">
 </a>
 <h1 class="home-hero" id="home-name">{{ site.name }}</h1>
-<p class="home-identity">{% include biography.html %}</p>
+<div class="home-identity biography">{% include biography.html %}</div>
 
 {% include research-interests.html %}
 <nav class="home-contact" aria-label="Contact and profiles">
