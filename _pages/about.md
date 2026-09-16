@@ -4,7 +4,10 @@ layout: page
 permalink: /about/
 ---
 
-# About
+<div class="page-heading" markdown="0">
+<h1>About</h1>
+<a class="cv-link" href="{{ site.links.cv | prepend: '/' | relative_url }}">{% include icon.html name="cv" %} View CV <span>PDF</span></a>
+</div>
 
 <p>{% include biography.html %}</p>
 
@@ -13,11 +16,11 @@ permalink: /about/
 ## Education
 
 <div class="section-card" markdown="1">
-### Southwest Jiaotong University
+### {{ site.institution }}
 
-**Bachelor’s Degree** · Sep 2023 – Jul 2027 (expected)  
-School of Computing and Artificial Intelligence  
-Chengdu, Sichuan, China
+**{{ site.data.profile.education.degree }}** · {{ site.data.profile.education.start }} – {{ site.data.profile.education.end }} (expected)<br>
+{{ site.data.profile.education.school }}<br>
+{{ site.data.profile.education.location }}
 </div>
 
 ## Contact & profiles

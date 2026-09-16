@@ -24,3 +24,34 @@
     padding-top: var(--space-4);
   }
 }
+
+.page-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+
+  h1 { margin: 0; }
+}
+
+.cv-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-secondary);
+  background-image: none;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+
+  svg { width: 1rem; height: 1rem; }
+  span { font-size: 0.75rem; color: var(--text-muted); }
+  &:hover { border-color: var(--accent); color: var(--accent); }
+}

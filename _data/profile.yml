@@ -1,0 +1,14 @@
+education:
+  school: School of Computing and Artificial Intelligence
+  degree: Bachelor’s degree
+  start: Sep 2023
+  end: Jul 2027
+  expected: July 2027
+  location: Chengdu, China
+research_interests:
+- name: Artificial Intelligence
+  url: https://en.wikipedia.org/wiki/Artificial_intelligence
+- name: Information Retrieval
+  url: https://en.wikipedia.org/wiki/Information_retrieval
+- name: Data Mining
+  url: https://en.wikipedia.org/wiki/Data_mining

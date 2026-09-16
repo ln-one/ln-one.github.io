@@ -38,7 +38,8 @@ If there is no `.codegraph/` directory, skip CodeGraph entirely — indexing is 
 
 Requires Ruby and Bundler; the documented local baseline is Ruby 3.4+.
 CI tests Ruby 3.4 and 4.0, and deployment uses Ruby 4.0.
-Python 3 is required for the local site checker. npm is only a command wrapper;
+Python 3 is required for the local site checker. CV generation requires RenderCV 2.8
+(`uv tool install 'rendercv[full]==2.8'`). npm is only a command wrapper;
 there are no Node package dependencies to install.
 
 ```sh
@@ -50,6 +51,7 @@ bundle install
 | --- | --- |
 | `npm run dev` | Serve at `http://127.0.0.1:4321/` |
 | `npm run build` | Build with strict front matter into `_site/` |
+| `npm run cv` | Regenerate the shared-data CV PDF without building the site |
 | `npm run check` | Check the already-built `_site/` with `scripts/check_site.py` |
 
 `scripts/jekyll.sh` selects Homebrew Ruby when available, then runs
@@ -166,3 +168,12 @@ Edit `_practice/` Markdown; Jekyll renders it under `/practice/`. Before edits, 
 `python3 /Users/ln1/Projects/writing-sync-pilot/sync.py practice --check`; sync if different.
 Sync once after edits. Preserve conflicts; never force. Work directly on `main`.
 Publishing still requires a user request.
+
+## CV
+
+`npm run build` and CI generate `papers/Chunran_Zhang_CV.pdf` before Jekyll.
+Edit `_data/profile.yml` for shared education/interests, `_config.yml` for identity,
+`assets/ref.bib` for papers (`cv_summary` is optional), and `docs/cv/design.yaml`
+for layout. Generated files in `output/` and the PDF in `papers/` are ignored.
+`npm run dev` generates once at startup; rerun `npm run cv` after changing CV data.
+See `docs/cv/README.md`. Inspect PDF layout after content changes.

@@ -9,3 +9,9 @@ _config_pages.yml
 
 # Local migration recovery record
 MIGRATION.md
+
+# Local document previews
+/output/
+
+# Generated during builds
+/papers/Chunran_Zhang_CV.pdf

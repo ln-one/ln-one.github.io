@@ -1,0 +1,58 @@
+design:
+  theme: classic
+  page:
+    size: a4
+    top_margin: 2cm
+    bottom_margin: 2cm
+    left_margin: 2cm
+    right_margin: 2cm
+    show_footer: false
+    show_top_note: false
+  colors:
+    body: '#30343b'
+    name: '#252a32'
+    headline: '#515a66'
+    connections: '#365b7b'
+    section_titles: '#365b7b'
+    links: '#365b7b'
+  typography:
+    font_family:
+      body: Source Sans 3
+      name: EB Garamond
+      headline: Source Sans 3
+      connections: Source Sans 3
+      section_titles: Source Sans 3
+    font_size:
+      body: 11pt
+      name: 27pt
+      headline: 10pt
+      connections: 10pt
+      section_titles: 12.5pt
+    alignment: left
+    line_spacing: 0.65em
+  header:
+    alignment: left
+    space_below_name: 0.4cm
+    space_below_headline: 0.22cm
+    space_below_connections: 0.6cm
+    connections:
+      show_icons: false
+  sections:
+    space_between_regular_entries: 1.6em
+  entries:
+    date_and_location_width: 3.5cm
+  templates:
+    publication_entry:
+      main_column: "**TITLE**\nAUTHORS\n[JOURNAL](URL)RESOURCES\n\nSUMMARY"
+      date_and_location_column: DATE
+  section_titles:
+    type: without_line
+    line_thickness: 0.3pt
+    space_above: 0.75cm
+    space_below: 0.32cm
+locale:
+  language: english
+settings:
+  render_command:
+    dont_generate_html: true
+    dont_generate_markdown: true
