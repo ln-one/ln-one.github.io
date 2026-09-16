@@ -1,0 +1,122 @@
+schema_version: 1
+
+identity:
+  name: Chunran Zhang
+  anchors:
+    orcid: "0009-0005-8865-2090"
+    github: "ln-one"
+    affiliation: "Southwest Jiaotong University"
+
+policy:
+  source_of_truth: "public external sources"
+  homepage_is_source: false
+  publish_only_public_high_confidence: true
+  merge_versions_into_work_lineage: true
+  author_position_is_identity_signal: false
+
+works:
+  - id: eahr
+    acronym: EAHR
+    title: "Exact Adaptive Hybrid Retrieval Without Fixed Top-L Cutoffs"
+    authors:
+      - name: "Chunran Zhang"
+        identity: self
+    public: true
+    publication_state: preprint
+    arxiv:
+      id: "2608.07152"
+      latest_verified_version: 1
+      primary_class: "cs.IR"
+      url: "https://arxiv.org/abs/2608.07152"
+    identifiers:
+      doi: "10.48550/arXiv.2608.07152"
+    github:
+      repository: "ln-one/exact-adaptive-hybrid-retrieval"
+      url: "https://github.com/ln-one/exact-adaptive-hybrid-retrieval"
+    identity_resolution:
+      confidence: high
+      evidence:
+        - type: public_arxiv_authorship
+          url: "https://arxiv.org/abs/2608.07152"
+        - type: owned_public_repository_linked_to_work
+          url: "https://github.com/ln-one/exact-adaptive-hybrid-retrieval"
+
+  - id: desa
+    acronym: DESA
+    title: "Query Expansion Should Be Coordinated: Dense Expands, Sparse Anchors"
+    authors:
+      - name: "Chunran Zhang"
+        identity: self
+    public: true
+    publication_state: preprint
+    arxiv:
+      id: "2608.15851"
+      latest_verified_version: 2
+      primary_class: "cs.IR"
+      url: "https://arxiv.org/abs/2608.15851"
+    identifiers:
+      doi: "10.48550/arXiv.2608.15851"
+    github:
+      repository: "ln-one/dense-expands-sparse-anchors"
+      url: "https://github.com/ln-one/dense-expands-sparse-anchors"
+    identity_resolution:
+      confidence: high
+      evidence:
+        - type: public_arxiv_authorship
+          url: "https://arxiv.org/abs/2608.15851"
+        - type: owned_public_repository_linked_to_work
+          url: "https://github.com/ln-one/dense-expands-sparse-anchors"
+
+  - id: dibud
+    acronym: DiBud
+    title: "Top-K Is Not a Budget for Hybrid Retrieval"
+    authors:
+      - name: "Chunran Zhang"
+        identity: self
+    public: true
+    publication_state: preprint
+    arxiv:
+      id: "2609.15143"
+      latest_verified_version: 1
+      primary_class: "cs.IR"
+      url: "https://arxiv.org/abs/2609.15143"
+    identifiers:
+      doi: "10.48550/arXiv.2609.15143"
+    github:
+      repository: "ln-one/top-k-is-not-a-budget"
+      url: "https://github.com/ln-one/top-k-is-not-a-budget"
+    identity_resolution:
+      confidence: high
+      evidence:
+        - type: public_arxiv_authorship
+          url: "https://arxiv.org/abs/2609.15143"
+        - type: owned_public_repository_linked_to_work
+          url: "https://github.com/ln-one/top-k-is-not-a-budget"
+
+  - id: onjo
+    acronym: ONJO
+    title: "Opacity Is Not Just Opacity"
+    authors:
+      - name: "Chunran Zhang"
+        identity: self
+    public: true
+    publication_state: preprint
+    arxiv:
+      id: "2609.14971"
+      latest_verified_version: 1
+      primary_class: "cs.GR"
+      secondary_classes:
+        - "cs.HC"
+      url: "https://arxiv.org/abs/2609.14971"
+    identifiers:
+      doi: "10.48550/arXiv.2609.14971"
+    github:
+      repository: "ln-one/opacity-is-not-just-opacity"
+      url: "https://github.com/ln-one/opacity-is-not-just-opacity"
+    identity_resolution:
+      confidence: high
+      evidence:
+        - type: public_arxiv_authorship
+          url: "https://arxiv.org/abs/2609.14971"
+        - type: owned_public_repository_linked_to_work
+          url: "https://github.com/ln-one/opacity-is-not-just-opacity"
