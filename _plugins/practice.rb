@@ -3,6 +3,7 @@ module Jekyll
   class PracticeGenerator < Generator
     def generate(site)
       page = site.pages.find { |item| item.data['permalink'] == '/practice/' }
+      return unless page
       %w[Workflow Figures Standards].each do |title|
         body = File.read(File.join(site.source, '_practice', "#{title}.md"))
         # Keep this personal remark in the source, but omit it from the public site.

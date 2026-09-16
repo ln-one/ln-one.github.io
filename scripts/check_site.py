@@ -28,20 +28,9 @@ for key, identifier in (('dibud', '2609.15143'), ('opacity', '2609.14971'), ('de
         errors.append(f'Homepage: missing work link {anchor}')
     if f'id="{anchor}"' not in publications or f'https://arxiv.org/abs/{identifier}' not in publications:
         errors.append(f'Publications: missing {identifier} or its anchor')
-for route in ('practice', 'practice/workflow', 'practice/figures', 'practice/standards'):
-    page = root / route / 'index.html'
-    assert page.is_file(), f'Missing {route}'
-    assert '[[' not in page.read_text(), f'Unresolved wiki link in {route}'
-practice = (root / 'practice/index.html').read_text()
-private_remark = 'Doing this knowingly is academic misconduct; doing it unknowingly is stupidity, not an excuse.'
-assert private_remark in Path("_practice/Standards.md").read_text()
-for public_file in (root / "practice/index.html", root / "assets/search.json"):
-    assert private_remark not in public_file.read_text(), f"Personal remark exposed in {public_file}"
-for heading in ('workflow', 'figures', 'standards'):
-    assert f'<h2 id="{heading}">' in practice
-    assert f'href="#{heading}"' in practice
-for heading in ('tools', 'colors', 'appearance'):
-    assert f'<h3 id="{heading}">' in practice
+assert not (root / 'practice').exists(), 'Unpublished Practice output must not be generated'
+for public_file in (root / 'index.html', root / 'assets/search.json', root / 'sitemap.xml'):
+    assert '/practice' not in public_file.read_text(), f'Practice still exposed in {public_file}'
 for private in ('AGENTS.md', 'MIGRATION.md', 'CONTENT_SOURCES.md', 'package.json', 'scripts', '_practice'):
     if (root/private).exists(): errors.append(f'Build exposes {private}')
 # Search results must lead to real pages and publication anchors.

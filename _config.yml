@@ -49,7 +49,6 @@ analytics:
 nav_pages:
   - name: about
   - name: publications
-  - name: practice
 
 # ============================================================
 # STEP 5: Publications (assets/ref.bib)
@@ -109,6 +108,8 @@ plugins: ["jekyll/scholar", "jekyll-sitemap"]
 
 # Repository files that should not be published to the site
 exclude:
+  # Practice is unpublished; retain its local sources for future use.
+  - _pages/practice.md
   - Gemfile
   - Gemfile.lock
   - README.md
