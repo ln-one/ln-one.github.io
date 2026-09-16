@@ -18,3 +18,9 @@
 .page-content > h1:first-child {
   margin-top: 0;
 }
+
+@media (max-width: 768px) {
+  .site-container:has(> .page-content) {
+    padding-top: var(--space-4);
+  }
+}
