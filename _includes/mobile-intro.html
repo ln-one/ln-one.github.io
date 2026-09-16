@@ -3,13 +3,9 @@
 <img src="{{ site.photo | prepend: '/images/' | relative_url }}" class="home-portrait" alt="{{ site.name | escape }}" width="140" height="140" fetchpriority="high">
 </a>
 <h1 class="home-hero" id="home-name">{{ site.name }}</h1>
-<p class="home-identity">Studying computer science. Interested in cognition, psychology, and philosophy. Enjoy reading <a href="https://en.wikipedia.org/wiki/Fyodor_Dostoevsky">Dostoevsky</a>’s books. Most inspired by <a href="https://en.wikipedia.org/wiki/G%C3%B6del,_Escher,_Bach"><em>Gödel, Escher, Bach</em></a>.</p>
+<p class="home-identity">{% include biography.html %}</p>
 
-<div class="chip-container" role="group" aria-label="Research interests">
-<a class="chip" href="https://en.wikipedia.org/wiki/Artificial_intelligence" title="Artificial Intelligence on Wikipedia">Artificial Intelligence</a>
-<a class="chip" href="https://en.wikipedia.org/wiki/Information_retrieval" title="Information Retrieval on Wikipedia">Information Retrieval</a>
-<a class="chip" href="https://en.wikipedia.org/wiki/Data_mining" title="Data Mining on Wikipedia">Data Mining</a>
-</div>
+{% include research-interests.html %}
 <nav class="home-contact" aria-label="Contact and profiles">
 {% if site.email %}<a href="mailto:{{ site.email }}" title="Email" aria-label="Email">{% include icon.html name="envelope" %}</a>{% endif %}
 {% if site.links.cv and site.links.cv != "" %}<a href="{{ site.links.cv | prepend: '/' | relative_url }}" title="CV" aria-label="CV">{% include icon.html name="cv" %}</a>{% endif %}

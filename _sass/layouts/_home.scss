@@ -10,7 +10,7 @@
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: var(--space-8);
+    gap: var(--space-6);
   }
 }
 
@@ -50,44 +50,6 @@
   }
 }
 
-.home-hero-sub {
-  font-size: 1.0625rem;
-  color: var(--text-muted);
-  margin-bottom: var(--space-8);
-  font-style: italic;
-  max-width: none;
-}
-
-// Banner image — editorial frame with caption
-.banner-frame {
-  margin: var(--space-8) 0;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--border-color);
-  background-color: var(--bg-card);
-
-  img {
-    width: 100%;
-    display: block;
-    border-radius: 0;
-    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  &:hover img {
-    transform: scale(1.02);
-  }
-
-  .banner-caption {
-    padding: var(--space-3) var(--space-4);
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    font-style: italic;
-    border-top: 1px solid var(--border-color);
-    background-color: var(--bg-secondary);
-  }
-}
-
 // News timeline
 .news-timeline {
   margin-top: 0;
@@ -123,7 +85,6 @@
 @media (max-width: 768px) {
   .desktop-only { display: none; }
   .mobile-only { display: block; }
-  .home-grid { gap: var(--space-6); }
   .home-content > h2 { margin-top: 0; }
   .home-intro {
     display: grid;
@@ -160,61 +121,30 @@
     a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   }
 
-  .home-research ol.bibliography {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
-    > li { min-width: 0; border: 0; }
-  }
-
-  .research-card {
-    height: 100%;
-    padding: var(--space-6);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    background: var(--bg-card);
-    display: flex;
-    flex-direction: column;
-
-    h3 { font-size: 1.25rem; line-height: 1.4; margin: var(--space-4) 0 var(--space-3); }
-    h3 a { color: var(--text-primary); background-image: none; }
-    h3 a:hover { color: var(--accent); }
-  }
-
-  .research-meta {
-    display: flex;
-    justify-content: space-between;
-    gap: var(--space-3);
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    .research-acronym { color: var(--accent); font-weight: 700; letter-spacing: 0.08em; }
-  }
-
-  .research-contribution { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.65; }
-  .research-links { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: auto; padding-top: var(--space-3); }
-
-
 }
 
 // Compact selected work, shared by desktop and mobile.
 .selected-work {
-  padding: var(--space-4) var(--space-6);
+  padding: var(--space-6);
 
   ol.bibliography { margin: 0; padding: 0; list-style: none; }
   ol.bibliography > li {
     margin: 0;
-    padding: var(--space-4) 0;
+    padding: 20px 0;
     border-bottom: 1px solid var(--border-color);
   }
   ol.bibliography > li:first-child { padding-top: 0; }
-  ol.bibliography > li:last-child { border-bottom: 0; }
+  ol.bibliography > li:last-child { border-bottom: 0; padding-bottom: 0; }
   .work-item h3 {
     font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
+    font-size: 1.0625rem;
     line-height: 1.45;
     font-weight: 600;
     margin: 0 0 var(--space-2);
   }
+  .work-kicker { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-3); margin-bottom: var(--space-2); font-size: 0.75rem; }
+  .work-acronym { font-weight: 700; letter-spacing: 0.04em; color: var(--accent); }
+  .work-topic { color: var(--text-muted); }
   .work-link {
     display: block;
     position: relative;
@@ -240,42 +170,7 @@
   .work-authors { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1); }
   .work-author { display: inline-flex; align-items: center; gap: var(--space-1); }
   .work-year { color: var(--text-muted); }
-  .all-publications { margin: var(--space-2) 0 0; font-size: 0.875rem; }
-
-  @media (max-width: 768px) {
-    padding: var(--space-4);
-  }
-}
-
-// Identify the selected publication after following a homepage link.
-.pub-entry:target {
-  scroll-margin-top: 100px;
-}
-.pub-entry:target:not(.target-dismissed) {
-  outline: 2px solid var(--accent);
-  outline-offset: 8px;
-}
-
-.pub-authors {
-  margin: var(--space-2) 0;
-  color: var(--text-secondary);
-  font-size: 0.875rem;
-}
-.pub-author { display: inline-flex; align-items: center; gap: var(--space-1); }
-.author-orcid { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; min-height: 24px; color: var(--accent); background-image: none; }
-.author-orcid .icon { width: 14px; height: 14px; }
-
-// Give selected work an editorial hierarchy without adding resource controls.
-.selected-work {
-  padding: var(--space-6);
-  .work-kicker { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-3); margin-bottom: var(--space-2); font-size: 0.75rem; }
-  .work-acronym { font-weight: 700; letter-spacing: 0.04em; color: var(--accent); }
-  .work-topic { color: var(--text-muted); }
-  .work-item h3 { font-size: 1.0625rem; }
-  .work-authors { font-size: 0.8125rem; }
-  ol.bibliography > li { border-color: var(--border-color); padding: 20px 0; }
-  ol.bibliography > li:last-child { padding-bottom: 0; }
-  .all-publications { margin-top: var(--space-6); padding-top: 0; }
+  .all-publications { margin: var(--space-6) 0 0; font-size: 0.875rem; padding-top: 0; }
 }
 
 @media (min-width: 769px) {

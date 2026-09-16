@@ -8,7 +8,7 @@ It builds a static site with **Jekyll 4.4**, **Jekyll Scholar 7.3**, Liquid,
 Markdown, SCSS, selected Bootstrap 5.3 styles, and vanilla JavaScript.
 
 The project has migrated from AstroWind. Do not apply the old Astro, Tailwind,
-TypeScript, MDX, or Sharp workflows. See `MIGRATION.md` for the previous workspace
+TypeScript, MDX, or Sharp workflows. See `docs/MIGRATION.md` for the previous workspace
 backup and `README.md` for current setup instructions.
 
 ## Code Search
@@ -61,20 +61,20 @@ Restart the development server after changing `_config.yml`.
 | Path | Responsibility |
 | --- | --- |
 | `_config.yml` | Identity, links, navigation, accent color, site URL, Scholar, plugins, build exclusions |
-| `_pages/home.md` | Homepage introduction and selected preprints |
+| `_pages/home.md` | Homepage introduction and selected work |
 | `_pages/about.md` | Education and contact details |
-| `_pages/publications.md` | Full publication list and filter |
+| `_pages/publications.md` | Full publication list |
 | `_pages/allnews.md` | News archive |
 | `_pages/404.md` | Not-found page |
 | `_data/news.yml` | News entries, newest first; `archived: true` hides old updates from home |
 | `_data/pi.yml` | Optional short education details consumed by the desktop sidebar |
 | `assets/ref.bib` | Publication metadata, summaries, selection, and resource links |
-| `_layouts/` | Page layouts, `research-card` for mobile homepage cards, and `bibtemplate` for full citations |
+| `_layouts/` | Page layouts, `work-item` for selected work, and `bibtemplate` for publication entries |
 | `_includes/` | Head metadata, navigation, sidebar, footer, SVG icons, analytics, and optional math |
 | `assets/main.scss` | SCSS entry point and selected Bootstrap imports |
 | `_sass/base/` | Fonts, design variables, typography, reset, and icons |
 | `_sass/components/`, `_sass/layouts/`, `_sass/utilities/` | Site styling, responsive layout, dark mode, and print styles |
-| `assets/js/site.js` | Mobile menu, theme toggle, publication filtering, BibTeX, and site search |
+| `assets/js/site.js` | Mobile menu, theme toggle, publication highlighting, BibTeX, and site search |
 | `_plugins/` | Ruby extensions, Markdown support, and search-index generation |
 | `assets/fonts/` | Self-hosted fonts and their licenses |
 | `images/`, `papers/` | Site images and optional local PDFs |
@@ -82,8 +82,11 @@ Restart the development server after changing `_config.yml`.
 
 `_site/` and `.jekyll-cache/` are generated output; edit their source files instead.
 Treat `vendor/` as installed dependencies and `_sass/bootstrap/` as vendored styles.
-The `_posts/` directory exists, but currently contains no blog posts. Other template
-data files are optional; do not add empty sections merely to use them.
+Create optional content directories only when needed; do not add empty sections merely to use them.
+
+The shared introduction lives in `_includes/biography.html`; research chips live
+in `_includes/research-interests.html`. Reuse these on Home and About instead of
+copying content into each page.
 
 ## Implementation Conventions
 
@@ -107,19 +110,20 @@ data files are optional; do not add empty sections merely to use them.
 
 ## Academic Content and Publications
 
-- Consult `CONTENT_SOURCES.md` before changing biographical or research claims.
+- Consult `docs/CONTENT_SOURCES.md` before changing biographical or research claims.
   Use owner-provided information and verified sources; do not infer awards,
   citation counts, acceptance status, or unspecified education details.
 - Current research interests are information retrieval, data mining, and
-  artificial intelligence. The two current manuscripts are labeled as preprints.
+  artificial intelligence. The four current manuscripts are labeled as preprints.
   Update status only when supported by new evidence.
 - Maintain publication records in `assets/ref.bib`. The homepage selects
-  `selected = {true}` entries: desktop uses full citations and mobile uses
-  `research-card`. The publications page retains full citations. `acronym`
-  provides the short card label.
+  `selected = {true}` entries using `work-item` on desktop and mobile.
+  The publications page uses `bibtemplate` for titles, author rows, badges, resource
+  links, and full BibTeX. `acronym` provides the short card label; `_data/work.yml`
+  holds short topic labels.
 - News uses `short_headline` on the homepage when supplied; the archive keeps
   every entry with its full `headline`.
-- `_layouts/bibtemplate.html` renders summaries, resource links, and expandable
+- `_layouts/bibtemplate.html` renders author rows, status badges, resource links, and expandable
   BibTeX/abstract blocks. `scholar.last_name` and `scholar.first_name` control
   owner-name highlighting; `bibtex_skip_fields` excludes template-only fields.
 - `file` refers to a PDF in `papers/`; `arxiv` stores an identifier. Fields such as
@@ -130,7 +134,7 @@ data files are optional; do not add empty sections merely to use them.
 ## Verification
 
 After changes, run `npm run build` followed by `npm run check`.
-The checker validates built internal links/assets, both current preprints,
+The checker validates built internal links/assets, all four current preprints,
 demo-content removal, and source-file exclusions. It does not replace browser
 checks, validate external destinations, or run Astro, ESLint, or Prettier.
 
@@ -138,7 +142,7 @@ For changes affecting rendered content, styles, or interactions, also inspect:
 
 - Homepage, About, and Publications at desktop and mobile widths.
 - Light/dark themes, mobile navigation, and visible keyboard focus.
-- Relevant search/filter behavior, BibTeX expansion/copy, and affected links.
+- Relevant site search behavior, BibTeX expansion/copy, and affected links.
 
 Documentation-only changes require review of the diff and referenced paths;
 no browser check is needed when rendered output is unaffected. Report any checks
@@ -154,7 +158,7 @@ Both workflows rasterize favicon assets during their builds.
 
 A push to `main` triggers publication; do not push solely to preview a local edit.
 Keep internal documentation and tooling excluded in `_config.yml`, including
-`AGENTS.md`, `MIGRATION.md`, `CONTENT_SOURCES.md`, `package.json`, and `scripts/`.
+`AGENTS.md`, `docs/MIGRATION.md`, `docs/CONTENT_SOURCES.md`, `package.json`, and `scripts/`.
 
 ## Practice
 

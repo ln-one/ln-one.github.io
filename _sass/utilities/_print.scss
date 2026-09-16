@@ -78,53 +78,9 @@
   .home-grid {
     display: block;
   }
-  // Card grids: Chrome moves a whole CSS grid to the next page rather than
-  // splitting it between rows, which strands the heading above it. Plain
-  // block flow and floats fragment correctly.
-  .team-grid,
-  .research-grid {
-    display: block;
-  }
-  .research-grid::after {
-    content: '';
-    display: block;
-    clear: both;
-  }
-  // Chrome treats flex containers as unbreakable when paginating, so the
-  // compact people card is plain block flow with a floated photo.
-  .team-card {
-    display: block;
-    overflow: hidden;
-    text-align: left;
-    margin-bottom: var(--space-3);
-  }
-  .research-card {
-    float: left;
-    width: 48%;
-    margin: 0 1% 1em 0;
-  }
-  // Compact people cards: less ink, and a row is short enough to stay with its heading
-  .team-card {
-    padding: var(--space-3);
-  }
-  .team-card .team-photo {
-    float: left;
-    width: 64px;
-    height: 64px;
-    margin: 0 var(--space-4) 0 0;
-  }
-  .team-card .team-links {
-    justify-content: flex-start;
-    margin-top: 0;
-    padding-top: 0;
-    border-top: none;
-  }
-
   // Keep small units whole across page breaks. Large containers such as
   // .section-card must be allowed to split, or a card longer than a page is
   // pushed to the next page leaving the first one blank.
-  .team-card,
-  .research-card,
   .callout,
   .pub-entry,
   .news-item,
@@ -138,9 +94,7 @@
   }
 
   .section-card,
-  .profile-card,
-  .team-card,
-  .research-card {
+  .profile-card {
     box-shadow: none;
     border: 1px solid var(--border-color);
   }
@@ -162,7 +116,6 @@
 
   // Pills and badges as plain text
   .btn-pill,
-  .year-badge,
   .chip {
     background: none !important;
     color: #000 !important;
@@ -172,8 +125,5 @@
   }
   .pub-actions {
     gap: 0 1.25em;
-  }
-  .year-badge {
-    font-weight: 700;
   }
 }

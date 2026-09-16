@@ -35,23 +35,6 @@
   }
 }
 
-// Year badge — accent pill floated right
-.year-badge {
-  display: inline-block;
-  float: right;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  padding: 0.15rem 0.625rem;
-  border-radius: var(--radius-full);
-  background-color: var(--accent-light);
-  color: var(--accent);
-  border: 1px solid var(--accent);
-  margin-left: var(--space-3);
-  margin-top: var(--space-1);
-}
-
 // Selected publications on the home page: no list numbering
 ol.bibliography {
   list-style: none;
@@ -117,42 +100,14 @@ ol.bibliography {
   }
 }
 
-// Search bar
-.pub-search {
-  width: 100%;
-  padding: var(--space-3) var(--space-4);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-full);
-  background-color: var(--bg-card);
-  color: var(--text-primary);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.875rem;
-  margin-bottom: var(--space-6);
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-
-  &:focus {
-    outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-light);
-  }
-
-  &::placeholder {
-    color: var(--text-muted);
-  }
-}
-
-.pub-summary {
-  margin: var(--space-3) 0 0;
-  color: var(--text-secondary);
-}
-
 ol.bibliography > li + li {
   border-top: 1px solid var(--border-color);
 }
 
 .pub-entry {
   scroll-margin-top: 6rem;
-  &:target:not(.target-dismissed) { outline: 2px solid var(--accent); outline-offset: 6px; }
+  &:target { scroll-margin-top: 100px; }
+  &:target:not(.target-dismissed) { outline: 2px solid var(--accent); outline-offset: 8px; }
 }
 .copy-status {
   margin: var(--space-2) 0 0;
@@ -217,3 +172,12 @@ ol.bibliography > li + li {
   background: #b31b1b;
   border-color: #b31b1b;
 }
+
+.pub-authors {
+  margin: var(--space-2) 0;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+.pub-author { display: inline-flex; align-items: center; gap: var(--space-1); }
+.author-orcid { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; min-height: 24px; color: var(--accent); background-image: none; }
+.author-orcid .icon { width: 14px; height: 14px; }

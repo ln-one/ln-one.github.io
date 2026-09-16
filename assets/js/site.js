@@ -1,5 +1,5 @@
 // =============================================================
-// site.js — Mobile nav, dark mode, publication filter, toggles,
+// site.js — Mobile nav, dark mode, publication toggles,
 //           scroll effects, copy bibtex, back-to-top
 // =============================================================
 
@@ -108,25 +108,6 @@
     button.setAttribute('aria-expanded', String(expanded));
     target.hidden = !expanded;
   });
-
-  // ----- Publication Search/Filter -----
-
-  var searchInput = document.getElementById('pubSearch');
-  if (searchInput) {
-    searchInput.addEventListener('input', function () {
-      var query = this.value.toLowerCase().trim();
-      var entries = document.querySelectorAll('[data-pub-searchable]');
-
-      entries.forEach(function (entry) {
-        if (!query) {
-          entry.style.display = '';
-          return;
-        }
-        var text = entry.textContent.toLowerCase();
-        entry.style.display = text.includes(query) ? '' : 'none';
-      });
-    });
-  }
 
   // ----- Copy BibTeX Button -----
 
@@ -309,10 +290,6 @@
       if (destination.pathname !== location.pathname || !destination.hash) return;
       var target = document.getElementById(decodeURIComponent(destination.hash.slice(1)));
       if (!target) return;
-      if (searchInput) {
-        searchInput.value = '';
-        document.querySelectorAll('[data-pub-searchable]').forEach(function (entry) { entry.style.display = ''; });
-      }
       if (navMenu && navToggler) {
         navMenu.classList.remove('show');
         navToggler.setAttribute('aria-expanded', 'false');

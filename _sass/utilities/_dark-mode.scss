@@ -3,14 +3,8 @@
 // =============================================================
 
 [data-bs-theme="dark"] {
-  .pub-search {
-    background-color: var(--bg-secondary);
-  }
-
   // Slightly reduce image brightness in dark mode
-  .profile-photo,
-  .team-photo,
-  .pi-photo {
+  .profile-photo {
     filter: brightness(0.92);
   }
 

@@ -1,4 +1,4 @@
-{% capture display_title %}{% if page.url == '/' %}{{ site.name }} — {{ page.research_title }}{% elsif page.title %}{{ page.title }} — {{ site.name }}{% else %}{{ site.name }}{% endif %}{% endcapture %}
+{% capture display_title %}{% if page.url == '/' %}{{ site.name }}{% elsif page.title %}{{ page.title }} — {{ site.name }}{% else %}{{ site.name }}{% endif %}{% endcapture %}
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,8 +26,9 @@
   <meta name="theme-color" content="{{ site.accent_color | default: '#1a7a6d' }}">
   <link rel="canonical" href="{{ page.url | replace: 'index.html', '' | absolute_url }}">
   <!-- Personal logo; raster fallbacks are generated for browser compatibility. -->
-  <link rel="icon" type="image/png" sizes="64x64" href="{{ '/images/ln1-avatar-tab.png' | relative_url }}">
-  <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}">
+  <link rel="icon" type="image/x-icon" sizes="32x32" href="{{ '/favicon.ico' | relative_url }}?v=logo-20260916">
+  <link rel="icon" type="image/png" sizes="64x64" href="{{ '/images/ln1-avatar-tab.png' | relative_url }}?v=logo-20260916">
+  <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}?v=logo-20260916">
   <link rel="alternate" type="application/rss+xml" title="{{ site.name | escape }}" href="{{ '/feed.xml' | absolute_url }}">
 
   <!-- Accent color from config; light/dark variants are derived in _sass/base/_variables.scss -->

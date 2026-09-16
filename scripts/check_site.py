@@ -31,7 +31,7 @@ for key, identifier in (('dibud', '2609.15143'), ('opacity', '2609.14971'), ('de
 assert not (root / 'practice').exists(), 'Unpublished Practice output must not be generated'
 for public_file in (root / 'index.html', root / 'assets/search.json', root / 'sitemap.xml'):
     assert '/practice' not in public_file.read_text(), f'Practice still exposed in {public_file}'
-for private in ('AGENTS.md', 'MIGRATION.md', 'CONTENT_SOURCES.md', 'package.json', 'scripts', '_practice'):
+for private in ('AGENTS.md', 'MIGRATION.md', 'CONTENT_SOURCES.md', 'docs', 'assets/citesty.csl', 'package.json', 'scripts', '_practice'):
     if (root/private).exists(): errors.append(f'Build exposes {private}')
 # Search results must lead to real pages and publication anchors.
 search_records = json.loads((root / 'assets/search.json').read_text())

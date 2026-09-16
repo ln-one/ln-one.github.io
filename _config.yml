@@ -58,7 +58,7 @@ nav_pages:
 scholar:
   last_name: Zhang
   first_name: ["C."]
-  style: citesty
+  style: assets/citesty.csl
   locale: en
   source: /assets/
   bibliography: ref.bib
@@ -113,9 +113,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
-  - UPGRADING.md
   - LICENSE
-  - setup.sh
   - images/screenshots
   - vendor
   - .bundle
@@ -123,7 +121,7 @@ exclude:
 
   - AGENTS.md
   - CLAUDE.md
-  - MIGRATION.md
-  - CONTENT_SOURCES.md
+  - docs
+  - assets/citesty.csl
   - package.json
   - scripts
