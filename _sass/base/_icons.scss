@@ -11,3 +11,17 @@
   fill: currentColor;
   flex-shrink: 0;
 }
+
+// Brand-colored icons use movement instead of theme recoloring for feedback.
+.icon-orcid {
+  transition: transform var(--transition-fast);
+}
+
+a:hover .icon-orcid,
+a:focus-visible .icon-orcid {
+  transform: scale(1.15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icon-orcid { transition: none; }
+}

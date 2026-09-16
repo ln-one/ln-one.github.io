@@ -2,6 +2,8 @@
 ---
 
 
+@use "sass:map";
+
 // Fonts (self-hosted)
 @import "base/fonts";
 
@@ -18,11 +20,18 @@
 @import "bootstrap/type";
 @import "bootstrap/images";
 @import "bootstrap/containers";
-@import "bootstrap/grid";
 @import "bootstrap/tables";
 @import "bootstrap/transitions";
 @import "bootstrap/nav";
 @import "bootstrap/navbar";
+// Generate only utility families used by our templates (including post.html).
+// Add a family here when introducing a Bootstrap utility from another group.
+$utilities: (
+  "display": map.merge(map.get($utilities, "display"), (responsive: false, print: false, values: flex)),
+  "align-items": map.merge(map.get($utilities, "align-items"), (responsive: false, values: center)),
+  "margin-end": map.merge(map.get($utilities, "margin-end"), (responsive: false, values: (auto: auto))),
+  "color": map.merge(map.get($utilities, "color"), (values: ("muted": var(--text-muted))))
+);
 @import "bootstrap/utilities/api";
 
 // Base
