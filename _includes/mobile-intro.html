@@ -3,19 +3,20 @@
 <img src="{{ site.photo | prepend: '/images/' | relative_url }}" class="home-portrait" alt="{{ site.name | escape }}" width="140" height="140" fetchpriority="high">
 </a>
 <h1 class="home-hero" id="home-name">{{ site.name }}</h1>
-<p class="home-identity">{{ site.title }} at <strong>{{ site.institution }}</strong>.</p>
+<p class="home-identity">Studying computer science. Interested in cognition, psychology, and philosophy. Enjoy reading Dostoevsky’s books. Most inspired by <em>Gödel, Escher, Bach</em>.</p>
+
 <div class="chip-container" role="group" aria-label="Research interests">
+<span class="chip">Artificial Intelligence</span>
 <span class="chip">Information Retrieval</span>
 <span class="chip">Data Mining</span>
-<span class="chip">Artificial Intelligence</span>
 </div>
 <nav class="home-contact" aria-label="Contact and profiles">
-{% if site.email %}<a href="mailto:{{ site.email }}">{% include icon.html name="envelope" %} Email</a>{% endif %}
-{% if site.links.cv and site.links.cv != "" %}<a href="{{ site.links.cv | prepend: '/' | relative_url }}">CV</a>{% endif %}
-{% if site.links.google_scholar and site.links.google_scholar != "" %}<a href="{{ site.links.google_scholar }}">Google Scholar</a>{% endif %}
-{% if site.links.github and site.links.github != "" %}<a href="{{ site.links.github }}">GitHub</a>{% endif %}
-{% if site.links.orcid and site.links.orcid != "" %}<a href="{{ site.links.orcid }}">ORCID</a>{% endif %}
-{% if site.links.researchgate and site.links.researchgate != "" %}<a href="{{ site.links.researchgate }}">ResearchGate</a>{% endif %}
+{% if site.email %}<a href="mailto:{{ site.email }}" title="Email" aria-label="Email">{% include icon.html name="envelope" %}</a>{% endif %}
+{% if site.links.cv and site.links.cv != "" %}<a href="{{ site.links.cv | prepend: '/' | relative_url }}" title="CV" aria-label="CV">{% include icon.html name="cv" %}</a>{% endif %}
+{% if site.links.google_scholar and site.links.google_scholar != "" %}<a href="{{ site.links.google_scholar }}" title="Google Scholar" aria-label="Google Scholar">{% include icon.html name="google-scholar" %}</a>{% endif %}
+{% if site.links.github and site.links.github != "" %}<a href="{{ site.links.github }}" title="GitHub" aria-label="GitHub">{% include icon.html name="github" %}</a>{% endif %}
+{% if site.links.orcid and site.links.orcid != "" %}<a href="{{ site.links.orcid }}" title="ORCID" aria-label="ORCID">{% include icon.html name="orcid" %}</a>{% endif %}
+{% if site.links.researchgate and site.links.researchgate != "" %}<a href="{{ site.links.researchgate }}" title="ResearchGate" aria-label="ResearchGate">{% include icon.html name="researchgate" %}</a>{% endif %}
 </nav>
 </section>
 

@@ -152,7 +152,7 @@ ol.bibliography > li + li {
 
 .pub-entry {
   scroll-margin-top: 6rem;
-  &:target { outline: 2px solid var(--accent); outline-offset: 6px; }
+  &:target:not(.target-dismissed) { outline: 2px solid var(--accent); outline-offset: 6px; }
 }
 .copy-status {
   margin: var(--space-2) 0 0;

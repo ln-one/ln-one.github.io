@@ -22,3 +22,7 @@ Verified 2026-09-16.
 
 - DiBud title, sole author, submission date (2026-09-14), status, summary, and code URL: https://arxiv.org/abs/2609.15143.
 - Opacity Is Not Just Opacity title, sole author, submission date (2026-09-14), current v2 revision (2026-09-15), status, summary, and code URL: https://arxiv.org/abs/2609.14971. “Opacity” is a short homepage card label, not a claimed method acronym.
+
+- Reading preference and homepage wording supplied and approved by the owner: “Enjoy reading Dostoevsky.”
+
+- Homepage introduction approved by the owner: studying computer science; interests in cognition, psychology, and philosophy; enjoys Dostoevsky’s books; most inspired by Gödel, Escher, Bach. These are personal interests, not claims of a formal degree title or established research specialization.

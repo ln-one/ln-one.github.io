@@ -2,7 +2,7 @@
 <h2 style="margin-top: 0; font-size: 1.125rem;">News</h2>
 <div class="news-timeline">
 {% assign latest_news = site.data.news | where_exp: "article", "article.archived != true" %}
-{% for article in latest_news limit:3 %}
+{% for article in latest_news limit:4 %}
 <div class="news-item">
 <div class="news-date">{{ article.date }}</div>
 <div class="news-headline">{{ article.short_headline | default: article.headline }}</div>

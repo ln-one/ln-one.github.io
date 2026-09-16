@@ -8,13 +8,15 @@ research_title: "Information Retrieval, Data Mining & AI"
 <div class="desktop-only" markdown="1">
 <h1 class="home-hero" id="desktop-home-name">{{ site.name }}</h1>
 
-Undergraduate at **Southwest Jiaotong University**.
+Studying computer science. Interested in cognition, psychology, and philosophy. Enjoy reading Dostoevsky’s books. Most inspired by *Gödel, Escher, Bach*.
 
 <div class="chip-container" role="group" aria-label="Research interests" markdown="0">
 <span class="chip">Artificial Intelligence</span>
-<span class="chip">Data Mining</span>
 <span class="chip">Information Retrieval</span>
+<span class="chip">Data Mining</span>
 </div>
+
+
 
 </div>
 

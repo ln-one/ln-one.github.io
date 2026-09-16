@@ -72,6 +72,28 @@
     });
   }
 
+  // Dismiss the arrival highlight without changing the deep link or scroll position.
+  document.addEventListener('click', function (e) {
+    var highlighted = document.querySelector('.pub-entry:target');
+    if (highlighted && !highlighted.contains(e.target)) {
+      highlighted.classList.add('target-dismissed');
+    }
+    var link = e.target.closest('a[href]');
+    if (link) {
+      var destination = new URL(link.href, location.href);
+      if (destination.pathname === location.pathname && destination.hash) {
+        document.querySelectorAll('.pub-entry.target-dismissed').forEach(function (entry) {
+          entry.classList.remove('target-dismissed');
+        });
+      }
+    }
+  });
+  window.addEventListener('hashchange', function () {
+    document.querySelectorAll('.pub-entry.target-dismissed').forEach(function (entry) {
+      entry.classList.remove('target-dismissed');
+    });
+  });
+
   // ----- Publication Expand/Collapse -----
 
   document.addEventListener('click', function (e) {
