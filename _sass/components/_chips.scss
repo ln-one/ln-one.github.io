@@ -31,6 +31,11 @@
     color: var(--on-accent);
   }
 
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
   // Muted variant for non-linked chips
   &.chip-muted {
     background-color: var(--bg-secondary);
