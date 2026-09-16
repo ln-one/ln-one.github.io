@@ -25,6 +25,7 @@ module MachineReadable
     {
       '@type' => 'Person', '@id' => url(site, '/#person'),
       'name' => config['name'], 'url' => url(site, '/'),
+      'alternateName' => config['alternate_name'],
       'jobTitle' => config['title'], 'email' => "mailto:#{config['email']}",
       'affiliation' => { '@type' => 'CollegeOrUniversity', 'name' => config['institution'] },
       'sameAs' => config.fetch('links').values_at('orcid', 'google_scholar', 'github', 'researchgate').reject { |v| v.to_s.empty? }

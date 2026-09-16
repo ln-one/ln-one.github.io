@@ -12,7 +12,7 @@
 <!-- Plausible -->
 <script defer data-domain="{{ site.analytics.plausible_domain }}" src="https://plausible.io/js/script.js"></script>
 {% endif %}
-{% if site.analytics.umami_website_id and site.analytics.umami_website_id != "" %}
+{% if jekyll.environment == 'production' and site.analytics.umami_website_id and site.analytics.umami_website_id != "" %}
 <!-- Umami -->
 <script defer src="{% if site.analytics.umami_src and site.analytics.umami_src != "" %}{{ site.analytics.umami_src }}{% else %}https://cloud.umami.is/script.js{% endif %}" data-website-id="{{ site.analytics.umami_website_id }}"></script>
 {% endif %}

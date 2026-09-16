@@ -2,6 +2,7 @@
 # STEP 1: Your Identity (required)
 # ============================================================
 name: "Chunran Zhang"
+alternate_name: "张春冉" # Machine-readable identity only; not displayed on pages.
 title: "Undergraduate"
 institution: "Southwest Jiaotong University"
 email: chronis@my.swjtu.edu.cn
@@ -37,7 +38,7 @@ baseurl: ""
 analytics:
   google_id: ""          # Google Analytics 4 measurement ID, e.g. G-XXXXXXXXXX
   plausible_domain: ""   # Plausible: your site's domain, e.g. jsmith.github.io
-  umami_website_id: ""   # Umami: website ID (and umami_src if self-hosted)
+  umami_website_id: "77b9ff2f-6172-4cd0-9246-124daaba9529" # Production only
   umami_src: ""          #   default https://cloud.umami.is/script.js
   goatcounter: ""        # GoatCounter: your code, e.g. jsmith (for jsmith.goatcounter.com)
 
