@@ -18,12 +18,12 @@
 
   <!-- Fonts are self-hosted (assets/fonts/, declared in _sass/base/_fonts.scss).
        Preload the two faces used above the fold. -->
-  <link rel="preload" href="{{ '/assets/fonts/source-serif-4-latin-normal-wght.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="{{ '/assets/fonts/dm-sans-latin-normal-wght.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ '/assets/fonts/inter-latin-normal.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ '/assets/fonts/ibm-plex-sans-latin-normal.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
 
   <!-- Styles -->
   <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
-  <meta name="theme-color" content="{{ site.accent_color | default: '#1a7a6d' }}">
+  <meta name="theme-color" content="{{ site.accent_color | default: '#2052bb' }}">
   <link rel="canonical" href="{{ page.url | replace: 'index.html', '' | absolute_url }}">
   <!-- Personal logo; raster fallbacks are generated for browser compatibility. -->
   <link rel="icon" type="image/x-icon" sizes="32x32" href="{{ '/favicon.ico' | relative_url }}?v=logo-20260916">

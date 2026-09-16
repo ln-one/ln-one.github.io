@@ -79,11 +79,10 @@
   height: 2.25rem;
   border-radius: var(--radius-full);
   color: var(--text-muted);
-  transition: all var(--transition-fast);
+  transition: color var(--transition-fast), opacity var(--transition-fast);
   font-size: 1.125rem;
 
   &:hover {
     color: var(--accent);
-    background-color: var(--accent-light);
   }
 }

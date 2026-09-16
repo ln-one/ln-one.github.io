@@ -1,12 +1,11 @@
 // =============================================================
-// Typography — Source Serif + DM Sans
+// Typography — Inter + IBM Plex Sans
 // =============================================================
 // Fonts are self-hosted; see _fonts.scss.
-// Source Serif 4: elegant variable-weight serif for headings
-// DM Sans: clean geometric sans for body with personality
+// Inter headings and IBM Plex Sans body text.
 
 body {
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, sans-serif;
   font-size: 1rem;
   line-height: 1.75;
@@ -14,8 +13,8 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Source Serif 4', 'Georgia', 'Times New Roman', serif;
-  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--text-primary);
   margin-top: var(--space-10);

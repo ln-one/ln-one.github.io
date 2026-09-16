@@ -1,29 +1,29 @@
 // =============================================================
-// Design Tokens — Editorial Academic
+// Design Tokens — Blue and neutral gray
 // =============================================================
 
 :root {
   // Accent. Set `accent_color` in _config.yml (it overrides --accent-base);
   // every other accent variable is derived from it so light and dark mode
   // both stay readable whatever color is chosen.
-  --accent-base: #1a7a6d;
+  --accent-base: #2052bb;
   --accent: var(--accent-base);
   --accent-hover: color-mix(in srgb, var(--accent-base) 82%, black);
   --accent-light: color-mix(in srgb, var(--accent-base) 8%, transparent);
   --on-accent: #ffffff;           // text placed on a solid accent background
 
-  // Light mode — warm parchment tones
-  --bg-primary: #f8f6f1;
-  --bg-secondary: #f0ece4;
+  // Light mode — neutral gray
+  --bg-primary: #f8f8f8;
+  --bg-secondary: #eef0f3;
   --bg-card: #ffffff;
-  --text-primary: #2c2a25;
-  --text-secondary: #5c5850;
-  --text-muted: #6f6a61;
-  --border-color: #e2ded6;
-  --shadow-sm: 0 1px 3px rgba(44, 42, 37, 0.06);
-  --shadow-md: 0 4px 12px rgba(44, 42, 37, 0.08);
-  --shadow-lg: 0 8px 24px rgba(44, 42, 37, 0.1);
-  --shadow-navbar: 0 1px 4px rgba(44, 42, 37, 0.1);
+  --text-primary: #353940;
+  --text-secondary: #444b55;
+  --text-muted: #68707c;
+  --border-color: #e2e5e9;
+  --shadow-sm: 0 1px 3px rgba(20, 30, 50, 0.025);
+  --shadow-md: 0 4px 12px rgba(20, 30, 50, 0.04);
+  --shadow-lg: 0 8px 24px rgba(20, 30, 50, 0.06);
+  --shadow-navbar: 0 1px 4px rgba(20, 30, 50, 0.06);
 
   // Layout
   --container-max: 1100px;
@@ -53,23 +53,23 @@
   --transition-slow: 400ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-// Dark mode — rich warm dark
+// Dark mode — neutral charcoal
 [data-bs-theme="dark"] {
   // Lighten the accent so text and pills meet WCAG AA on dark surfaces
   --accent: color-mix(in srgb, var(--accent-base) 62%, white);
   --accent-hover: color-mix(in srgb, var(--accent-base) 45%, white);
   --accent-light: color-mix(in srgb, var(--accent-base) 14%, transparent);
-  --on-accent: #1c1b18;
+  --on-accent: #181b20;
 
-  --bg-primary: #1c1b18;
-  --bg-secondary: #262520;
-  --bg-card: #2a2924;
-  --text-primary: #e8e4dc;
-  --text-secondary: #b5b0a5;
-  --text-muted: #9a958a;
-  --border-color: #3d3a33;
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
-  --shadow-navbar: 0 1px 4px rgba(0, 0, 0, 0.4);
+  --bg-primary: #181b20;
+  --bg-secondary: #20252c;
+  --bg-card: #22272e;
+  --text-primary: #edf0f5;
+  --text-secondary: #c0c7d1;
+  --text-muted: #9da7b5;
+  --border-color: #363e49;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.16);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+  --shadow-navbar: 0 1px 4px rgba(0, 0, 0, 0.2);
 }

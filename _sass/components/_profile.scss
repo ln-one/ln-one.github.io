@@ -28,11 +28,7 @@
 
 .profile-card {
   text-align: center;
-  background: linear-gradient(
-    145deg,
-    var(--bg-card) 0%,
-    var(--bg-secondary) 100%
-  );
+  background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xl);
   padding: var(--space-10) var(--space-6) var(--space-8);
@@ -56,9 +52,9 @@
   &:hover .profile-photo { transform: scale(1.4); }
 
   .profile-name {
-    font-family: 'Source Serif 4', Georgia, serif;
+    font-family: 'Inter', sans-serif;
     font-size: 1.375rem;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--text-primary);
     max-width: none;
     margin-bottom: var(--space-1);

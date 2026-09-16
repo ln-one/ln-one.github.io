@@ -32,9 +32,9 @@
 
 // Hero heading — the person's name, large and prominent
 .home-hero {
-  font-family: 'Source Serif 4', Georgia, serif;
+  font-family: 'Inter', sans-serif;
   font-size: 2.75rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.15;
   margin-top: 0;
@@ -69,7 +69,7 @@
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
   }
 
   .news-headline {
@@ -117,7 +117,8 @@
       background-image: none;
     }
     .icon { width: 20px; height: 20px; }
-    a:hover { background-color: var(--bg-secondary); }
+    a { color: var(--text-muted); transition: color var(--transition-fast); }
+    a:hover { color: var(--accent); }
     a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   }
 
@@ -136,7 +137,7 @@
   ol.bibliography > li:first-child { padding-top: 0; }
   ol.bibliography > li:last-child { border-bottom: 0; padding-bottom: 0; }
   .work-item h3 {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
     font-size: 1.0625rem;
     line-height: 1.45;
     font-weight: 600;
