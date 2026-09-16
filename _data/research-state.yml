@@ -184,7 +184,7 @@ works:
         url: "https://github.com/ln-one/opacity-is-not-just-opacity"
       arxiv:
         id: "2609.14971"
-        latest_verified_version: 1
+        latest_verified_version: 2
         primary_class: "cs.GR"
         secondary_classes:
           - "cs.HC"
