@@ -13,3 +13,8 @@
   margin: 0 auto;
   padding: var(--space-8) var(--container-padding) 0;
 }
+
+// The container already supplies the space below the navigation.
+.page-content > h1:first-child {
+  margin-top: 0;
+}
