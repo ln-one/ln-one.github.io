@@ -173,13 +173,15 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  window.addEventListener('scroll', function () {
-    if (window.scrollY > 400) {
-      topBtn.classList.add('visible');
-    } else {
-      topBtn.classList.remove('visible');
-    }
-  }, { passive: true });
+  function updateTopButton() {
+    var visible = window.scrollY > 80;
+    topBtn.classList.toggle('visible', visible);
+    topBtn.tabIndex = visible ? 0 : -1;
+    topBtn.setAttribute('aria-hidden', String(!visible));
+  }
+  window.addEventListener('scroll', updateTopButton, { passive: true });
+  window.addEventListener('pageshow', updateTopButton);
+  updateTopButton();
 
   // ----- Navbar Scroll Shadow -----
 

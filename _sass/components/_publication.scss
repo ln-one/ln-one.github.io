@@ -148,12 +148,10 @@ ol.bibliography > li + li {
 }
 
 .pub-heading {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
   gap: var(--space-2) var(--space-4);
-  .pub-title { flex: 1 1 28rem; }
 }
 .pub-badges { display: flex; flex-wrap: wrap; gap: var(--space-2); }
 .pub-badge {
@@ -181,3 +179,22 @@ ol.bibliography > li + li {
 .pub-author { display: inline-flex; align-items: center; gap: var(--space-1); }
 .author-orcid { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; min-height: 24px; color: var(--accent); background-image: none; }
 .author-orcid .icon { width: 14px; height: 14px; }
+
+@media (max-width: 576px) {
+  .pub-heading { column-gap: var(--space-2); }
+  .pub-badges {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    max-width: 5rem;
+  }
+  .pub-badge {
+    font-size: 0.625rem;
+    padding: 0.1rem 0.4rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .pub-heading { grid-template-columns: minmax(0, 1fr); }
+  .pub-badges { display: none; }
+}
