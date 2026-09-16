@@ -1,122 +1,200 @@
-schema_version: 1
+# MACHINE-MAINTAINED FILE.
+# This file is a rebuildable cache of publicly verified research state.
+# External public sources are authoritative; this file and the rendered homepage are not.
+
+schema_version: 2
+
+state_semantics:
+  kind: derived_public_cache
+  rebuildable_from_external_sources: true
+  homepage_is_source_of_truth: false
+  current_file_is_evidence: false
+  public_only: true
+  write_policy: high_confidence_only
+  idempotent: true
 
 identity:
-  name: Chunran Zhang
+  canonical_name: "Chunran Zhang"
   anchors:
     orcid: "0009-0005-8865-2090"
-    github: "ln-one"
+    github_login: "ln-one"
     affiliation: "Southwest Jiaotong University"
 
-policy:
-  source_of_truth: "public external sources"
-  homepage_is_source: false
-  publish_only_public_high_confidence: true
-  merge_versions_into_work_lineage: true
-  author_position_is_identity_signal: false
+source_policy:
+  discovery:
+    - github
+    - arxiv
+    - openalex
+    - semantic_scholar
+    - orcid
+    - crossref
+    - datacite
+    - official_venue_pages
+  authority_by_fact:
+    arxiv_metadata_and_versions:
+      - arxiv
+    repository_identity_and_visibility:
+      - github
+    doi_metadata:
+      - crossref
+      - datacite
+    formal_publication_status:
+      - official_venue_pages
+      - publisher_or_proceedings
+      - crossref
+      - datacite
+    author_identity:
+      - exact_orcid
+      - exact_public_institutional_email
+      - owned_github_repository_with_explicit_work_link
+      - confirmed_scholarly_author_entity
+  discovery_only_not_authoritative_for_version_truth:
+    - openalex
+    - semantic_scholar
+    - general_web_search
+
+identity_resolution:
+  principles:
+    - "Author order must never determine identity."
+    - "An exact name match alone is insufficient."
+    - "Absence from ORCID is not evidence that a work is unrelated."
+    - "Private repositories and non-public manuscripts must never be projected to the public homepage."
+  automatic_accept_examples:
+    - exact_orcid_match
+    - exact_public_institutional_email_match
+    - owned_public_repository_explicitly_linked_to_the_work
+    - confirmed_author_entity_plus_consistent_independent_evidence
+  unresolved_policy: do_not_publish
+
+lineage_resolution:
+  principles:
+    - "One research work has one canonical work record."
+    - "arXiv v1/v2/v3 are versions of one work, not separate works."
+    - "A repository, arXiv record, DOI, proceedings entry, and venue publication may be manifestations of the same work."
+    - "A later formal publication upgrades the same lineage instead of creating a duplicate work."
+  match_signals:
+    - persistent_identifier
+    - explicit_cross_link
+    - exact_or_near_exact_title_with_matching_authorship
+    - repository_metadata
 
 works:
-  - id: eahr
+  - work_id: "ghrepo:1327115062"
+    canonical_title: "Exact Adaptive Hybrid Retrieval Without Fixed Top-L Cutoffs"
     acronym: EAHR
-    title: "Exact Adaptive Hybrid Retrieval Without Fixed Top-L Cutoffs"
     authors:
       - name: "Chunran Zhang"
-        identity: self
-    public: true
+        self: true
+        position: 1
+    visibility: public
     publication_state: preprint
-    arxiv:
-      id: "2608.07152"
-      latest_verified_version: 1
-      primary_class: "cs.IR"
-      url: "https://arxiv.org/abs/2608.07152"
-    identifiers:
-      doi: "10.48550/arXiv.2608.07152"
-    github:
-      repository: "ln-one/exact-adaptive-hybrid-retrieval"
-      url: "https://github.com/ln-one/exact-adaptive-hybrid-retrieval"
+    manifestations:
+      github:
+        repository_id: 1327115062
+        repository: "ln-one/exact-adaptive-hybrid-retrieval"
+        url: "https://github.com/ln-one/exact-adaptive-hybrid-retrieval"
+      arxiv:
+        id: "2608.07152"
+        latest_verified_version: 1
+        primary_class: "cs.IR"
+        url: "https://arxiv.org/abs/2608.07152"
+      doi:
+        value: "10.48550/arXiv.2608.07152"
+        kind: arxiv_datacite_doi
     identity_resolution:
+      status: accepted
       confidence: high
-      evidence:
-        - type: public_arxiv_authorship
-          url: "https://arxiv.org/abs/2608.07152"
-        - type: owned_public_repository_linked_to_work
-          url: "https://github.com/ln-one/exact-adaptive-hybrid-retrieval"
+      public_evidence:
+        - public_arxiv_authorship
+        - owned_public_repository_linked_to_work
 
-  - id: desa
+  - work_id: "ghrepo:1332463503"
+    canonical_title: "Query Expansion Should Be Coordinated: Dense Expands, Sparse Anchors"
     acronym: DESA
-    title: "Query Expansion Should Be Coordinated: Dense Expands, Sparse Anchors"
     authors:
       - name: "Chunran Zhang"
-        identity: self
-    public: true
+        self: true
+        position: 1
+    visibility: public
     publication_state: preprint
-    arxiv:
-      id: "2608.15851"
-      latest_verified_version: 2
-      primary_class: "cs.IR"
-      url: "https://arxiv.org/abs/2608.15851"
-    identifiers:
-      doi: "10.48550/arXiv.2608.15851"
-    github:
-      repository: "ln-one/dense-expands-sparse-anchors"
-      url: "https://github.com/ln-one/dense-expands-sparse-anchors"
+    manifestations:
+      github:
+        repository_id: 1332463503
+        repository: "ln-one/dense-expands-sparse-anchors"
+        url: "https://github.com/ln-one/dense-expands-sparse-anchors"
+      arxiv:
+        id: "2608.15851"
+        latest_verified_version: 2
+        primary_class: "cs.IR"
+        secondary_classes:
+          - "cs.CL"
+        url: "https://arxiv.org/abs/2608.15851"
+      doi:
+        value: "10.48550/arXiv.2608.15851"
+        kind: arxiv_datacite_doi
     identity_resolution:
+      status: accepted
       confidence: high
-      evidence:
-        - type: public_arxiv_authorship
-          url: "https://arxiv.org/abs/2608.15851"
-        - type: owned_public_repository_linked_to_work
-          url: "https://github.com/ln-one/dense-expands-sparse-anchors"
+      public_evidence:
+        - public_arxiv_authorship
+        - owned_public_repository_linked_to_work
 
-  - id: dibud
+  - work_id: "ghrepo:1362348793"
+    canonical_title: "Top-K Is Not a Budget for Hybrid Retrieval"
     acronym: DiBud
-    title: "Top-K Is Not a Budget for Hybrid Retrieval"
     authors:
       - name: "Chunran Zhang"
-        identity: self
-    public: true
+        self: true
+        position: 1
+    visibility: public
     publication_state: preprint
-    arxiv:
-      id: "2609.15143"
-      latest_verified_version: 1
-      primary_class: "cs.IR"
-      url: "https://arxiv.org/abs/2609.15143"
-    identifiers:
-      doi: "10.48550/arXiv.2609.15143"
-    github:
-      repository: "ln-one/top-k-is-not-a-budget"
-      url: "https://github.com/ln-one/top-k-is-not-a-budget"
+    manifestations:
+      github:
+        repository_id: 1362348793
+        repository: "ln-one/top-k-is-not-a-budget"
+        url: "https://github.com/ln-one/top-k-is-not-a-budget"
+      arxiv:
+        id: "2609.15143"
+        latest_verified_version: 1
+        primary_class: "cs.IR"
+        url: "https://arxiv.org/abs/2609.15143"
+      doi:
+        value: "10.48550/arXiv.2609.15143"
+        kind: arxiv_datacite_doi
     identity_resolution:
+      status: accepted
       confidence: high
-      evidence:
-        - type: public_arxiv_authorship
-          url: "https://arxiv.org/abs/2609.15143"
-        - type: owned_public_repository_linked_to_work
-          url: "https://github.com/ln-one/top-k-is-not-a-budget"
+      public_evidence:
+        - public_arxiv_authorship
+        - owned_public_repository_linked_to_work
 
-  - id: onjo
+  - work_id: "ghrepo:1368556084"
+    canonical_title: "Opacity Is Not Just Opacity"
     acronym: ONJO
-    title: "Opacity Is Not Just Opacity"
     authors:
       - name: "Chunran Zhang"
-        identity: self
-    public: true
+        self: true
+        position: 1
+    visibility: public
     publication_state: preprint
-    arxiv:
-      id: "2609.14971"
-      latest_verified_version: 1
-      primary_class: "cs.GR"
-      secondary_classes:
-        - "cs.HC"
-      url: "https://arxiv.org/abs/2609.14971"
-    identifiers:
-      doi: "10.48550/arXiv.2609.14971"
-    github:
-      repository: "ln-one/opacity-is-not-just-opacity"
-      url: "https://github.com/ln-one/opacity-is-not-just-opacity"
+    manifestations:
+      github:
+        repository_id: 1368556084
+        repository: "ln-one/opacity-is-not-just-opacity"
+        url: "https://github.com/ln-one/opacity-is-not-just-opacity"
+      arxiv:
+        id: "2609.14971"
+        latest_verified_version: 1
+        primary_class: "cs.GR"
+        secondary_classes:
+          - "cs.HC"
+        url: "https://arxiv.org/abs/2609.14971"
+      doi:
+        value: "10.48550/arXiv.2609.14971"
+        kind: arxiv_datacite_doi
     identity_resolution:
+      status: accepted
       confidence: high
-      evidence:
-        - type: public_arxiv_authorship
-          url: "https://arxiv.org/abs/2609.14971"
-        - type: owned_public_repository_linked_to_work
-          url: "https://github.com/ln-one/opacity-is-not-just-opacity"
+      public_evidence:
+        - public_arxiv_authorship
+        - owned_public_repository_linked_to_work
