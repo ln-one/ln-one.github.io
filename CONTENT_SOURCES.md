@@ -1,6 +1,6 @@
 # Content provenance
 
-Verified 2026-09-09.
+Verified 2026-09-16.
 
 - Name, email, affiliation, location, undergraduate final-year status, and profile URLs: directly provided by Chunran Zhang in this task.
 - DESA title, author, status, dates, and research description: https://arxiv.org/abs/2608.15851 (v2); code link from the arXiv record.
@@ -18,7 +18,7 @@ Verified 2026-09-09.
 
 `_practice/` contains the owner-authored Workflow, Figures, and Standards notes, synchronized with Obsidian. The BLEACH panel is an owner-provided illustration, not original site artwork or covered by the site code license.
 
-## New preprints verified 2026-09-15
+## New preprints verified 2026-09-16
 
 - DiBud title, sole author, submission date (2026-09-14), status, summary, and code URL: https://arxiv.org/abs/2609.15143.
-- Opacity Is Not Just Opacity title, sole author, submission date (2026-09-14), status, summary, and code URL: https://arxiv.org/abs/2609.14971. “Opacity” is a short homepage card label, not a claimed method acronym.
+- Opacity Is Not Just Opacity title, sole author, submission date (2026-09-14), current v2 revision (2026-09-15), status, summary, and code URL: https://arxiv.org/abs/2609.14971. “Opacity” is a short homepage card label, not a claimed method acronym.
