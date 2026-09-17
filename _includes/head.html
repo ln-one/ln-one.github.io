@@ -1,4 +1,4 @@
-{% capture display_title %}{% if page.title %}{{ page.title }} — {{ site.name }}{% else %}{{ site.name }}{% endif %}{% endcapture %}
+{% capture display_title %}{% if page.url == '/' %}{{ site.name }}{% elsif page.title %}{{ page.title }} — {{ site.name }}{% else %}{{ site.name }}{% endif %}{% endcapture %}
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
