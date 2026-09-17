@@ -101,6 +101,14 @@ works:
       doi:
         value: "10.48550/arXiv.2608.07152"
         kind: arxiv_datacite_doi
+      zenodo:
+        concept_doi: "10.5281/zenodo.21968866"
+        version_doi: "10.5281/zenodo.21968867"
+        version: "v0.1.1"
+        title: "Exact Adaptive Hybrid Retrieval: Code and Reproducibility Artifacts"
+        resource_type: software
+        issued: "2026-08-16"
+        url: "https://doi.org/10.5281/zenodo.21968866"
     identity_resolution:
       status: accepted
       confidence: high
