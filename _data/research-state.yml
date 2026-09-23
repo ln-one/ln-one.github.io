@@ -183,6 +183,10 @@ works:
       - name: "Chunran Zhang"
         self: true
         position: 1
+      - name: "Tianrui Li"
+        self: false
+        position: 2
+        corresponding: true
     visibility: public
     publication_state: preprint
     manifestations:
@@ -192,7 +196,8 @@ works:
         url: "https://github.com/ln-one/opacity-is-not-just-opacity"
       arxiv:
         id: "2609.14971"
-        latest_verified_version: 2
+        latest_verified_version: 3
+        latest_verified_revision_date: "2026-09-22"
         primary_class: "cs.GR"
         secondary_classes:
           - "cs.HC"
@@ -205,4 +210,5 @@ works:
       confidence: high
       public_evidence:
         - public_arxiv_authorship
+        - public_arxiv_affiliation
         - owned_public_repository_linked_to_work
