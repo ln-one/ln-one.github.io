@@ -36,7 +36,7 @@
     {% assign authors = entry.author | split: ' and ' %}
     {% for author in authors %}
       {% assign parts = author | split: ', ' %}
-      <span class="pub-author">{% if parts.size == 2 %}{{ parts[1] | escape }} {{ parts[0] | escape }}{% else %}{{ author | escape }}{% endif %}{% if author == 'Zhang, Chunran' and site.links.orcid %}<a class="author-orcid" href="{{ site.links.orcid }}" aria-label="Chunran Zhang on ORCID">{% include icon.html name="orcid" %}</a>{% endif %}</span>{% unless forloop.last %}, {% endunless %}
+      <span class="pub-author">{% if parts.size == 2 %}{{ parts[1] | escape }} {{ parts[0] | escape }}{% else %}{{ author | escape }}{% endif %}{% if author == 'Zhang, Chunran' and site.links.orcid %}<a class="author-orcid" href="{{ site.links.orcid }}" aria-label="Chunran Zhang on ORCID">{% include icon.html name="orcid" %}</a>{% elsif author == 'Li, Tianrui' %}<a class="author-orcid" href="https://orcid.org/0000-0001-7780-104X" aria-label="Tianrui Li on ORCID">{% include icon.html name="orcid" %}</a>{% endif %}</span>{% unless forloop.last %}, {% endunless %}
     {% endfor %}
   </p>
   <div class="pub-actions">
