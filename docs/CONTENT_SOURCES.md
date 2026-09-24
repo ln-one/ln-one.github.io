@@ -2,6 +2,9 @@
 
 Verified 2026-09-23.
 
+- Ph.D. offer news (2026-09-24): the owner supplied a screenshot confirming acceptance of Southwest Jiaotong University's pending admission offer for direct doctoral study, and confirmed supervision by Prof. Tianrui Li. The owner approved the news wording and supplied the faculty profile link. This announces an accepted offer, not current doctoral enrollment.
+
+
 - Name, email, affiliation, location, undergraduate final-year status, and profile URLs: directly provided by Chunran Zhang in this task.
 - DESA title, author, status, dates, and research description: https://arxiv.org/abs/2608.15851 (v2); code link from the arXiv record.
 - EAHR title, author, status, date, and research description: https://arxiv.org/abs/2608.07152.
