@@ -26,7 +26,7 @@ articles = [x for b in parser.blocks for x in b['@graph'] if x['@type'] == 'Scho
 markdown = (root/'profile.md').read_text()
 guide = (root/'llms.txt').read_text()
 assert markdown.startswith('# Chunran Zhang\n')
-assert 'Studying computer science, with interests in cognition and philosophy.' in markdown and 'I read' in markdown
+assert 'Studying computer science under the supervision of' in markdown and 'Prof. Tianrui Li' in markdown and 'I read' in markdown
 assert '{{' not in markdown and '<script' not in markdown
 assert len(articles) == len(re.findall(r'^### ', markdown, re.M)) >= 4
 for article in articles:

@@ -177,11 +177,21 @@
 @media (min-width: 769px) {
   .home-grid { align-items: stretch; }
   .home-content, .home-sidebar { display: flex; flex-direction: column; }
-  .home-content > .desktop-only { flex: 1; display: flex; flex-direction: column; justify-content: center; }
-  .home-content > .desktop-only .home-hero { margin-bottom: var(--space-4); }
+  .home-content > .desktop-only {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-6);
+    // Match the container's top inset so the whole introduction is centered
+    // between the navigation and the selected-work heading.
+    padding-bottom: var(--space-8);
+  }
+  .home-content > .desktop-only .home-hero { margin: 0; }
+  .home-content > .desktop-only .biography { margin-bottom: 0; }
   .home-content > .desktop-only > p { margin-bottom: 0; }
   .home-content > .desktop-only .chip-container {
-    margin: var(--space-6) 0 var(--space-8);
+    margin: 0;
     padding: 0;
   }
   .home-content > h2 { margin-top: 0; padding-top: 0; }

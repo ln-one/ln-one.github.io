@@ -2,6 +2,8 @@
 
 Verified 2026-09-23.
 
+- Biography updated with owner-approved wording on 2026-09-24: studying computer science under the supervision of Prof. Tianrui Li, linked to the faculty profile supplied by the owner. The reading paragraph is retained.
+
 - Ph.D. offer news (2026-09-24): the owner supplied a screenshot confirming acceptance of Southwest Jiaotong University's pending admission offer for direct doctoral study, and confirmed supervision by Prof. Tianrui Li. The owner approved the news wording and supplied the faculty profile link. This announces an accepted offer, not current doctoral enrollment.
 
 
