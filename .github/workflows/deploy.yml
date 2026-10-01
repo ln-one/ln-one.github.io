@@ -37,7 +37,7 @@ jobs:
       # (you.github.io), project sites (you.github.io/repo), and custom
       # domains all work without editing _config.yml.
       - name: Setup Python for CV
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version: '3.12'
 
