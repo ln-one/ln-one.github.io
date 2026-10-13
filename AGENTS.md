@@ -115,9 +115,12 @@ copying content into each page.
 - Consult `docs/CONTENT_SOURCES.md` before changing biographical or research claims.
   Use owner-provided information and verified sources; do not infer awards,
   citation counts, acceptance status, or unspecified education details.
-- Current research interests are information retrieval, data mining, and
-  artificial intelligence. The four current manuscripts are labeled as preprints.
-  Update status only when supported by new evidence.
+- Current primary research direction is embodied artificial intelligence. Existing
+  information-retrieval and RAG papers remain prior work with unchanged lineages and
+  publication states; do not infer the current direction from those papers. VLA models,
+  robot manipulation, simulation tasks, and model-inference efficiency are known entry
+  points, not the full research scope. The four current manuscripts are labeled as
+  preprints. Update status only when supported by new evidence.
 - Maintain publication records in `assets/ref.bib`. The homepage selects
   `selected = {true}` entries using `work-item` on desktop and mobile.
   The publications page uses `bibtemplate` for titles, author rows, badges, resource
