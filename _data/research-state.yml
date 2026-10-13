@@ -184,6 +184,7 @@ works:
         self: true
         position: 1
       - name: "Tianrui Li"
+        orcid: "0000-0001-7780-104X"
         self: false
         position: 2
         corresponding: true
@@ -211,4 +212,5 @@ works:
       public_evidence:
         - public_arxiv_authorship
         - public_arxiv_affiliation
+        - public_orcid_profile
         - owned_public_repository_linked_to_work
