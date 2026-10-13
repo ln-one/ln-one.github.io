@@ -1,6 +1,6 @@
 # Content provenance
 
-Verified 2026-09-23.
+Verified 2026-10-13.
 
 - Biography updated with owner-approved wording on 2026-09-24: studying computer science under the supervision of Prof. Tianrui Li, linked to the faculty profile supplied by the owner. The reading paragraph is retained.
 
@@ -15,7 +15,7 @@ Verified 2026-09-23.
 - Education dates and degree subsequently supplied by the owner: 2023-09-01 to 2027-07-01, Bachelor’s Degree, School of Computing and Artificial Intelligence, Southwest Jiaotong University, Chengdu, Sichuan, China. July 2027 is displayed as expected completion. Precise major and awards remain unspecified.
 - All four papers are labeled as preprints; no conference/journal acceptance claimed.
 
-- Research interests corrected directly by the owner: information retrieval, data mining, and artificial intelligence.
+- Current research direction updated directly by the owner on 2026-10-13: embodied artificial intelligence is the primary focus. VLA models, robot manipulation, simulation tasks, and model-inference efficiency are relevant entry points, but they do not define the full future research scope. Information-retrieval and RAG papers remain prior work with unchanged lineages and publication states; they are not the current primary direction.
 
 - ResearchGate profile URL supplied by the owner: https://www.researchgate.net/profile/Chunran-Zhang. No profile metrics or additional credentials inferred.
 
